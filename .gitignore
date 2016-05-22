@@ -1,0 +1,6 @@
+.vagrant
+
+public/node_modules/
+public/api/vendor/
+
+public/api/logs/*.log

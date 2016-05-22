@@ -1,0 +1,32 @@
+# Points à aborder
+
+- Comment on va procéder
+- PHP
+  - Syntaxe
+    - Vars avec $
+  - Modèle objet
+- HTTP 
+  - Requête
+    - URL
+    - Route demandée
+    - Réponse
+      - Content-Type, pour eux JSON
+- API
+  - Endpoints liés à une route dans le framework
+  - JSON
+  - CRUD
+- MVC
+  - Exemple avec le bar
+  - Model
+  - Controller
+  - Vue mais pas ce coup-çi
+- Slim
+  - Framework ?
+  - Routing
+    - D'habitude on sépare les routes et les controllers, mais là on a pas le temps
+    - 1 route = 1 action
+    - Fonction en paramètre, c'est quoi ? (Callback)
+  - Logging
+- BDD
+  - Ils ont eu des cours, qu'est-ce qu'ils ont retenu
+  - Définir le schéma relationnel (MySQL Workbench)
