@@ -17,7 +17,7 @@ $app->get('/route/{id}', function($request, $response, $args) {
 });
 
 // topic/*/posts
-$app->get('/topic/{id}/posts/', function($request, $response, $args) {
+$app->get('/topic/{id}/posts', function($request, $response, $args) {
     $sql = 'SELECT DISTINCT * FROM Post INNER JOIN Sujet ON Post.sujet = '.$args['id'];
     $query = $this->db->query($sql);
     $result = $query->fetchAll();
@@ -25,7 +25,7 @@ $app->get('/topic/{id}/posts/', function($request, $response, $args) {
 });
 
 // /post/*/comments
-$app->get('/post/{id}/comments/', function($request, $response, $args) {
+$app->get('/post/{id}/comments', function($request, $response, $args) {
     $id_array = explode(",",$args['id']);
     $sql = 'SELECT * FROM Comments WHERE ';
     for($i = 0; $i < count($id_array)-1; $i++) {
@@ -64,11 +64,6 @@ $app->post('/topics', function ($request, $response, $args) {
 
 // });
 
-$app->get('/jsonTestRoute', function($request, $response, $args) {
-  $array = [ "key" => "value" ];
-  return $response->withJson($array);
-});
-
 
 /* GET POST UPDATE DELETE*/
 ///a partir de la
@@ -86,7 +81,7 @@ $app->get('/tag/{id}/posts', function($request, $response, $args) {
 // ID topic
 
 
-$app->get('/topic/{id}/', function($request, $response, $args) {
+$app->get('/topic/{id}', function($request, $response, $args) {
   $sql = 'SELECT * FROM Sujet WHERE id='.$args['id'];
   $query = $this->db->query($sql);
   $result = $query->fetchAll();
