@@ -7,7 +7,13 @@ import ListView from './views/ListView.vue'
 import PostView from './views/PostView.vue'
 
 Vue.use(Router)
-var router = new Router()
+
+var router = new Router({
+  hashbang: false,
+  history: true,
+  mode: "html5"
+})
+
 router.map({
   '/topics': {
     component: HomeView
