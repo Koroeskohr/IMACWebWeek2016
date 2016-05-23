@@ -81,7 +81,7 @@ $app->get('/topic/{id}/', function($request, $response, $args) {
 // tags sur le post
 
 $app->get('/post/{id}/tags/', function($request, $response, $args) {
-  	$sql = 'SELECT Tag FROM Post WHERE idTag {id}';
+	$sql = 'SELECT * FROM Tagge WHERE idPost='.$args['id'];
    	$query = $this->db->query($sql);
    	$result = $query->fetchAll();
   return $response->withJson($result);
