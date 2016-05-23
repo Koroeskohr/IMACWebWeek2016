@@ -24,7 +24,7 @@ SQL
   - Hostname: localhost or 127.0.0.1
   - Username: root
   - Password: root
-  - Database: scotchbox
+  - Database: redbook
 
 Features
   - PHP 5.6
