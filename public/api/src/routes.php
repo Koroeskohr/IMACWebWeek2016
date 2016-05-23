@@ -20,3 +20,54 @@ $app->get('/jsonTestRoute', function($request, $response, $args) {
   $array = [ "key" => "value" ];
   return $response->withJson($array);
 });
+
+/* GET POST UPDATE DELETE*/
+///a partir de la
+//jointure
+
+
+$app->get('/tag/{id}/posts', function($request, $response, $args) {
+  $sql = 'SELECT * FROM posts INNER JOIN tags ON posts.id=tags.id}';
+  $array = $this->db->query($sql);
+  return $response->withJson($array);
+});
+
+//jointure
+
+// ID topic 
+
+$app->get('/topics/{id}/', function($request, $response, $args) {
+  $sql = 'SELECT id FROM topics WHERE id_topics {id}';
+    $array = $this->db->query($sql);
+  return $response->withJson($array);
+});
+
+// tags sur le post
+
+$app->get('/post/{id}/tags/', function($request, $response, $args) {
+  	$sql = 'SELECT tags FROM posts WHERE id_tags {id}';
+   	$array = $this->db->query($sql);
+  return $response->withJson($array);
+});
+
+
+// post - creer un post 
+$app->post('/tags/', function($request, $response, $args) {
+	$sql = 'SELECT * FROM tags WHERE id_tags {id}';
+    $array = $this->db->query($sql);
+  return $response->withJson($array);
+});
+
+
+$app->update('/post/{id}/tags/', function($request, $response, $args) {
+  $array = [ "key" => "value" ];
+  return $response->withJson($array);
+});
+
+$app->delete('/post/{id}/tags/', function($request, $response, $args) {
+  $array = [ "key" => "value" ];
+  return $response->withJson($array);
+});
+
+
+
