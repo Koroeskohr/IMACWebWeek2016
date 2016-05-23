@@ -26,15 +26,17 @@ $app->get('/topic/{id}/posts', function($request, $response, $args) {
 // /post/*/comments
 $app->get('/post/{id}/comments/', function($request, $response, $args) {
     $sql = 'SELECT id_comment FROM comments WHERE id_post {id}';
-    $array = $this->db->query($sql);
-    return $response->withJson($array);
+    $query = $this->db->query($sql);
+    $result = $query->fetchAll();
+    return $response->withJson($result);
 });
 
 // /topics GET
 $app->get('/topics/', function($request, $response, $args) {
-    $sql = 'SELECT * FROM topics';
-    $array = $this->db->query($sql);
-    return $response->withJson($array);
+    $sql = 'SELECT * FROM Sujet';
+    $query = $this->db->query($sql);
+    $result = $query->fetchAll();
+    return $response->withJson($result);
 });
 
 // /topics POST
@@ -66,7 +68,7 @@ $app->get('/tag/{id}/posts', function($request, $response, $args) {
 
 //jointure
 
-// ID topic 
+// ID topic
 
 $app->get('/topics/{id}/', function($request, $response, $args) {
   $sql = 'SELECT id FROM topics WHERE id_topics {id}';
@@ -83,7 +85,7 @@ $app->get('/post/{id}/tags/', function($request, $response, $args) {
 });
 
 
-// post - creer un post 
+// post - creer un post
 $app->post('/tags/', function($request, $response, $args) {
 	$sql = 'SELECT * FROM tags' ;
     $array = $app->request->post();
