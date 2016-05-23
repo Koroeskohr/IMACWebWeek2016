@@ -42,8 +42,8 @@ INSERT INTO `Post` (`titre`, `sujet`, `likes`, `auteur`, `date`, `image`, `texte
 ('Pique',	4,	0,	'Moi',	'2016-05-23 13:37:04',	'http://www.chicagonow.com/wild-wisdom/files/2013/11/biddy-hedgehog-16.jpg',	'Bacon ipsum dolor amet swine corned beef ground round, pork chop turkey short ribs pig salami short loin. Bresaola shoulder picanha hamburger capicola shank. Hamburger ball tip kevin landjaeger ribeye ham hock alcatra. Beef ribs pork chop pork loin, kevin picanha swine tail doner porchetta brisket drumstick jowl pork belly tri-tip. Porchetta filet mignon picanha, ground round chicken short loin beef ribs ham turducken frankfurter pork loin',	1),
 ('Titre',	2,	0,	'Anon',	'2016-05-23 13:38:20',	'http://kids.nationalgeographic.com/content/dam/kids/photos/animals/Mammals/H-P/hedgehog-closeup.jpg',	'Heeeey ! I like hedgehogs ;-)',	2),
 ('Zbrrrra',	3,	0,	'Zbrrrra',	'2016-05-23 13:38:59',	'http://animals.sandiegozoo.org/sites/default/files/juicebox_slides/hedgehog_05.jpg',	'Je ne sais pas vraiment de quoi parler du coup je tape sans regarder mon clavier, mais bon, je garantis rien. ',	3),
-('J\'aime les hérissons',	1,	8000,	'K4k0',	'2016-05-23 13:40:06',	'https://pixabay.com/static/uploads/photo/2014/10/01/10/44/hedgehog-468228_960_720.jpg',	'Trolololllllll',	4),
-('Nous on aime encore plus les hérissons',	1,	4294967295,	'S4t4N',	'2016-05-23 13:40:44',	'https://www.daysoftheyear.com/wp-content/images/hedgehog-day1-e1422787687319-804x382.jpg',	'Mouhahahahahahahahahahaha 3:D',	5);
+('J\'aime les h',	1,	8000,	'K4k0',	'2016-05-23 13:40:06',	'https://pixabay.com/static/uploads/photo/2014/10/01/10/44/hedgehog-468228_960_720.jpg',	'Trolololllllll',	4),
+('Nous on aime encore plus les h',	1,	4294967295,	'S4t4N',	'2016-05-23 13:40:44',	'https://www.daysoftheyear.com/wp-content/images/hedgehog-day1-e1422787687319-804x382.jpg',	'Mouhahahahahahahahahahaha 3:D',	5);
 
 DROP TABLE IF EXISTS `Sujet`;
 CREATE TABLE `Sujet` (
@@ -88,8 +88,9 @@ INSERT INTO `Tag` (`id`, `nom`) VALUES
 
 DROP TABLE IF EXISTS `Tagge`;
 CREATE TABLE `Tagge` (
-  `idPost` int(10) unsigned DEFAULT NULL,
-  `idTag` int(10) unsigned DEFAULT NULL,
+  `idPost` int(10) unsigned NOT NULL DEFAULT '0',
+  `idTag` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`idPost`,`idTag`),
   KEY `idPost` (`idPost`),
   KEY `idTag` (`idTag`),
   CONSTRAINT `Tagge_ibfk_1` FOREIGN KEY (`idPost`) REFERENCES `Post` (`id`),
@@ -98,9 +99,9 @@ CREATE TABLE `Tagge` (
 
 INSERT INTO `Tagge` (`idPost`, `idTag`) VALUES
 (1,	1),
-(5,	10),
+(2,	4),
 (4,	5),
 (5,	7),
-(2,	4);
+(5,	10);
 
--- 2016-05-23 13:43:06
+-- 2016-05-23 13:53:00
