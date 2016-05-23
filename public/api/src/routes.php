@@ -71,17 +71,17 @@ $app->get('/tag/{id}/posts', function($request, $response, $args) {
 
 // ID topic
 
-$app->get('/topics/{id}/', function($request, $response, $args) {
-  $sql = 'SELECT id FROM topics WHERE id_topics {id}';
+$app->get('/topic/{id}/', function($request, $response, $args) {
+  $sql = 'SELECT * FROM Sujet WHERE id='.$args['id'];
     $query = $this->db->query($sql);
     $result = $query->fetchAll();
   return $response->withJson($result);
-});
+});	
 
 // tags sur le post
 
 $app->get('/post/{id}/tags/', function($request, $response, $args) {
-  	$sql = 'SELECT Tag FROM Post WHERE id_tags {id}';
+  	$sql = 'SELECT Tag FROM Post WHERE idTag {id}';
    	$query = $this->db->query($sql);
    	$result = $query->fetchAll();
   return $response->withJson($result);
