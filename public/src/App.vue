@@ -4,7 +4,6 @@
       <h1>Reddbook</h1>
     </header><!-- /header -->
     <router-view
-      class="view"
       keep-alive
       transition
       transition-mode="out-in">

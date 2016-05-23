@@ -15,7 +15,7 @@ router.map({
   '/topic/:id': {
     component: ListView
   },
-  '/item/:id': {
+  '/post/:id': {
     component: PostView
   }
 })
@@ -29,8 +29,3 @@ router.redirect({
 })
 
 router.start(App, '#app')
-
-// new Vue({
-//   el: 'body',
-//   components: { App }
-// })
