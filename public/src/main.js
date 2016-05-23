@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import Resource from 'vue-resource'
 import App from './App.vue'
 
 import HomeView from './views/HomeView.vue'
@@ -7,6 +8,10 @@ import ListView from './views/ListView.vue'
 import PostView from './views/PostView.vue'
 
 Vue.use(Router)
+Vue.use(Resource)
+
+const API_BASE_URL = "http://192.168.33.10"
+Vue.http.options.root = API_BASE_URL + '/api/public';
 
 var router = new Router({
   hashbang: false,
