@@ -21,10 +21,10 @@ $app->get('/jsonTestRoute', function($request, $response, $args) {
   return $response->withJson($array);
 });
 
+
 /* GET POST UPDATE DELETE*/
 ///a partir de la
 //jointure
-
 
 $app->get('/tag/{id}/posts', function($request, $response, $args) {
   $sql = 'SELECT * FROM posts INNER JOIN tags ON posts.id=tags.id}';
@@ -53,17 +53,20 @@ $app->get('/post/{id}/tags/', function($request, $response, $args) {
 
 // post - creer un post 
 $app->post('/tags/', function($request, $response, $args) {
-	$sql = 'SELECT * FROM tags WHERE id_tags {id}';
-    $array = $this->db->query($sql);
+	$sql = 'SELECT * FROM tags' ;
+    $array = $app->request->post();
   return $response->withJson($array);
 });
 
 
-$app->update('/post/{id}/tags/', function($request, $response, $args) {
+// update post
+
+$app->patch('/post/{id}/tags/', function($request, $response, $args) {
   $array = [ "key" => "value" ];
   return $response->withJson($array);
 });
 
+//delete post
 $app->delete('/post/{id}/tags/', function($request, $response, $args) {
   $array = [ "key" => "value" ];
   return $response->withJson($array);
