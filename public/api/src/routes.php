@@ -17,15 +17,28 @@ $app->get('/route/{id}', function($request, $response, $args) {
 });
 
 // topic/*/posts
-$app->get('/topic/{id}/posts', function($request, $response, $args) {
-    $sql = 'SELECT post_id FROM posts WHERE id_topic {id}';
-    $array = $this->db->query($sql);
-    return $response->withJson($array);
+$app->get('/topic/{id}/posts/', function($request, $response, $args) {
+    $sql = 'SELECT DISTINCT * FROM Post INNER JOIN Sujet ON Post.sujet = '.$args['id'];
+    $query = $this->db->query($sql);
+    $result = $query->fetchAll();
+    return $response->withJson($result);
 });
 
 // /post/*/comments
 $app->get('/post/{id}/comments/', function($request, $response, $args) {
-    $sql = 'SELECT id_comment FROM comments WHERE id_post {id}';
+    $id_array = explode(",",$args['id']);
+    $sql = 'SELECT * FROM Comments WHERE ';
+    for($i = 0; $i < count($id_array)-1; $i++) {
+        $sql .= 'id = '.$id_array[$i].' OR ';
+    }
+    $sql .= 'id = '.$id_array[$i].';';
+    $query = $this->db->query($sql);
+    $result = $query->fetchAll();
+    return $response->withJson($result);
+});
+
+$app->get('/post/{id}', function($request, $response, $args) {
+    $sql = 'SELECT * FROM Post WHERE id='.$args['id'];
     $query = $this->db->query($sql);
     $result = $query->fetchAll();
     return $response->withJson($result);
@@ -37,12 +50,6 @@ $app->get('/topics/', function($request, $response, $args) {
     $query = $this->db->query($sql);
     $result = $query->fetchAll();
     return $response->withJson($result);
-});
-
-// /topics POST
-$app->post('/topics/', function ($request, $response, $args) {
-    $array = $app->request->post();
-    return $array;
 });
 
 // /topics PATCH
