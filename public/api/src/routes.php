@@ -90,7 +90,7 @@ $app->get('/post/{id}/tags/', function($request, $response, $args) {
 
 // post - creer un post
 $app->post('/tags/', function($request, $response, $args) {
-	$sql = 'SELECT * FROM Tag' ;
+	$sql = 'SELECT * FROM Post WHERE idPost='.$args['id'];
     $query = $app->request->post();
     $result = $query->fetchAll();
   return $response->withJson($result);
