@@ -17,7 +17,7 @@ return [
         // PDO settings
         'db' => [
             'host' => 'localhost',
-            'dbname' => 'scotchbox',
+            'dbname' => 'redbook',
             'user' => 'root',
             'pass' => 'root'
         ]
