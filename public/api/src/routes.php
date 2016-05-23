@@ -68,49 +68,55 @@ $app->get('/jsonTestRoute', function($request, $response, $args) {
 //jointure
 
 $app->get('/tag/{id}/posts', function($request, $response, $args) {
-  $sql = 'SELECT * FROM posts INNER JOIN tags ON posts.id=tags.id}';
-  $array = $this->db->query($sql);
-  return $response->withJson($array);
+  $sql = 'SELECT * FROM Post INNER JOIN Tagge ON idPost=idTag';
+  $query = $this->db->query($sql);
+  $result = $query->fetchAll();
+  return $response->withJson($result);
 });
 
 //jointure
 
 // ID topic
 
-$app->get('/topics/{id}/', function($request, $response, $args) {
-  $sql = 'SELECT id FROM topics WHERE id_topics {id}';
-    $array = $this->db->query($sql);
-  return $response->withJson($array);
-});
+$app->get('/topic/{id}/', function($request, $response, $args) {
+  $sql = 'SELECT * FROM Sujet WHERE id='.$args['id'];
+    $query = $this->db->query($sql);
+    $result = $query->fetchAll();
+  return $response->withJson($result);
+});	
 
 // tags sur le post
 
 $app->get('/post/{id}/tags/', function($request, $response, $args) {
-  	$sql = 'SELECT tags FROM posts WHERE id_tags {id}';
-   	$array = $this->db->query($sql);
-  return $response->withJson($array);
+	$sql = 'SELECT * FROM Tagge WHERE idPost='.$args['id'];
+   	$query = $this->db->query($sql);
+   	$result = $query->fetchAll();
+  return $response->withJson($result);
 });
 
 
 // post - creer un post
 $app->post('/tags/', function($request, $response, $args) {
-	$sql = 'SELECT * FROM tags' ;
-    $array = $app->request->post();
-  return $response->withJson($array);
+	$sql = 'SELECT * FROM Post WHERE idPost='.$args['id'];
+    $query = $app->request->post();
+    $result = $query->fetchAll();
+  return $response->withJson($result);
 });
 
 
 // update post
 
 $app->patch('/post/{id}/tags/', function($request, $response, $args) {
-  $array = [ "key" => "value" ];
-  return $response->withJson($array);
+  $query = [ "key" => "value" ];
+   $result = $query->fetchAll();
+  return $response->withJson($result);
 });
 
 //delete post
 $app->delete('/post/{id}/tags/', function($request, $response, $args) {
-  $array = [ "key" => "value" ];
-  return $response->withJson($array);
+  $query = [ "key" => "value" ];
+    $result = $query->fetchAll();
+  return $response->withJson($result);
 });
 
 
