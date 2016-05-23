@@ -29,7 +29,7 @@
         this.$http.get('topic/'+ to.params.id +'/posts').then( 
           (response) => {
             this.topic_id = to.params.id
-            console.log(response)
+            this.posts = response.data
           }, (response) => {
             console.log("post all fail " + response)
           }

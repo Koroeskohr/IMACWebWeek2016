@@ -1,10 +1,16 @@
 <template>
   <article class="post">
-    <img src="" alt="">
-    <h1 class="titre"></h1>
-    <div class="text">
-      
+    <div class="info">
+      <span class="date">{{ post.date }}</span>
     </div>
+    <img src="{{ post.image }}" alt="">
+    <h1 class="titre">{{ post.titre }}</h1>
+    <div class="text">
+      {{ post.texte }}
+    </div>
+    <span class="likes">
+      {{ post.likes }}
+    </span>
   </article>
 </template>
 
