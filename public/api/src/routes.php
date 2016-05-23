@@ -17,15 +17,28 @@ $app->get('/route/{id}', function($request, $response, $args) {
 });
 
 // topic/*/posts
-$app->get('/topic/{id}/posts', function($request, $response, $args) {
-    $sql = 'SELECT post_id FROM posts WHERE id_topic {id}';
-    $array = $this->db->query($sql);
-    return $response->withJson($array);
+$app->get('/topic/{id}/posts/', function($request, $response, $args) {
+    $sql = 'SELECT DISTINCT * FROM Post INNER JOIN Sujet ON Post.sujet = '.$args['id'];
+    $query = $this->db->query($sql);
+    $result = $query->fetchAll();
+    return $response->withJson($result);
 });
 
 // /post/*/comments
-$app->get('/post/{id}/comments', function($request, $response, $args) {
-    $sql = 'SELECT id_comment FROM comments WHERE id_post {id}';
+$app->get('/post/{id}/comments/', function($request, $response, $args) {
+    $id_array = explode(",",$args['id']);
+    $sql = 'SELECT * FROM Comments WHERE ';
+    for($i = 0; $i < count($id_array)-1; $i++) {
+        $sql .= 'id = '.$id_array[$i].' OR ';
+    }
+    $sql .= 'id = '.$id_array[$i].';';
+    $query = $this->db->query($sql);
+    $result = $query->fetchAll();
+    return $response->withJson($result);
+});
+
+$app->get('/post/{id}', function($request, $response, $args) {
+    $sql = 'SELECT * FROM Post WHERE id='.$args['id'];
     $query = $this->db->query($sql);
     $result = $query->fetchAll();
     return $response->withJson($result);
@@ -38,6 +51,7 @@ $app->get('/topics', function($request, $response, $args) {
     $result = $query->fetchAll();
     return $response->withJson($result);
 });
+
 
 // /topics POST
 $app->post('/topics', function ($request, $response, $args) {
@@ -71,42 +85,42 @@ $app->get('/tag/{id}/posts', function($request, $response, $args) {
 
 // ID topic
 
-$app->get('/topics/{id}', function($request, $response, $args) {
-  $sql = 'SELECT id FROM topics WHERE id_topics {id}';
-    $query = $this->db->query($sql);
-    $result = $query->fetchAll();
+
+$app->get('/topic/{id}/', function($request, $response, $args) {
+  $sql = 'SELECT * FROM Sujet WHERE id='.$args['id'];
+  $query = $this->db->query($sql);
+  $result = $query->fetchAll();
   return $response->withJson($result);
-});
+});	
 
 // tags sur le post
-
 $app->get('/post/{id}/tags', function($request, $response, $args) {
-  	$sql = 'SELECT Tag FROM Post WHERE id_tags {id}';
-   	$query = $this->db->query($sql);
-   	$result = $query->fetchAll();
+	$sql = 'SELECT * FROM Tagge WHERE idPost='.$args['id'];
+ 	$query = $this->db->query($sql);
+ 	$result = $query->fetchAll();
   return $response->withJson($result);
 });
 
 
 // post - creer un post
 $app->post('/tags', function($request, $response, $args) {
-	$sql = 'SELECT * FROM Tag' ;
-    $query = $app->request->post();
-    $result = $query->fetchAll();
+	$sql = 'SELECT * FROM Post WHERE idPost='.$args['id'];
+  $query = $app->request->post();
+  $result = $query->fetchAll();
   return $response->withJson($result);
 });
 
 
 // update post
 
-$app->patch('/post/{id}/tags/', function($request, $response, $args) {
+$app->patch('/post/{id}/tags', function($request, $response, $args) {
   $query = [ "key" => "value" ];
    $result = $query->fetchAll();
   return $response->withJson($result);
 });
 
 //delete post
-$app->delete('/post/{id}/tags/', function($request, $response, $args) {
+$app->delete('/post/{id}/tags', function($request, $response, $args) {
   $query = [ "key" => "value" ];
     $result = $query->fetchAll();
   return $response->withJson($result);
