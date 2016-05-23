@@ -24,7 +24,7 @@ $app->get('/topic/{id}/posts', function($request, $response, $args) {
 });
 
 // /post/*/comments
-$app->get('/post/{id}/comments/', function($request, $response, $args) {
+$app->get('/post/{id}/comments', function($request, $response, $args) {
     $sql = 'SELECT id_comment FROM comments WHERE id_post {id}';
     $query = $this->db->query($sql);
     $result = $query->fetchAll();
@@ -32,7 +32,7 @@ $app->get('/post/{id}/comments/', function($request, $response, $args) {
 });
 
 // /topics GET
-$app->get('/topics/', function($request, $response, $args) {
+$app->get('/topics', function($request, $response, $args) {
     $sql = 'SELECT * FROM Sujet';
     $query = $this->db->query($sql);
     $result = $query->fetchAll();
@@ -40,7 +40,7 @@ $app->get('/topics/', function($request, $response, $args) {
 });
 
 // /topics POST
-$app->post('/topics/', function ($request, $response, $args) {
+$app->post('/topics', function ($request, $response, $args) {
     $array = $app->request->post();
     return $array;
 });
@@ -71,7 +71,7 @@ $app->get('/tag/{id}/posts', function($request, $response, $args) {
 
 // ID topic
 
-$app->get('/topics/{id}/', function($request, $response, $args) {
+$app->get('/topics/{id}', function($request, $response, $args) {
   $sql = 'SELECT id FROM topics WHERE id_topics {id}';
     $query = $this->db->query($sql);
     $result = $query->fetchAll();
@@ -80,7 +80,7 @@ $app->get('/topics/{id}/', function($request, $response, $args) {
 
 // tags sur le post
 
-$app->get('/post/{id}/tags/', function($request, $response, $args) {
+$app->get('/post/{id}/tags', function($request, $response, $args) {
   	$sql = 'SELECT Tag FROM Post WHERE id_tags {id}';
    	$query = $this->db->query($sql);
    	$result = $query->fetchAll();
@@ -89,7 +89,7 @@ $app->get('/post/{id}/tags/', function($request, $response, $args) {
 
 
 // post - creer un post
-$app->post('/tags/', function($request, $response, $args) {
+$app->post('/tags', function($request, $response, $args) {
 	$sql = 'SELECT * FROM Tag' ;
     $query = $app->request->post();
     $result = $query->fetchAll();
