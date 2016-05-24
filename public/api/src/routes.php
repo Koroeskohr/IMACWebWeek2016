@@ -179,10 +179,34 @@ $app->delete('/post/{id}/tags', function($request, $response, $args) {
 
 // post - creer un post
 $app->post('/tags', function($request, $response, $args) {
-	$sql = 'SELECT * FROM Post WHERE idPost='.$args['id'];
-  $query = $app->request->post();
-  $result = $query->fetchAll();
-  return $response->withJson($result);
+	/* $id_array = explode(",",$args['id']);
+    $sql = 'SELECT * FROM Comments WHERE ';
+    for($i = 0; $i < count($id_array)-1; $i++) {
+        $sql .= 'id = '.$id_array[$i].' OR ';
+    }
+    $sql .= 'id = '.$id_array[$i].';';
+    $query = $this->db->query($sql);
+    $result = $query->fetchAll();
+    return $response->withJson($result);*/
+	try{
+		$id_array = explode(",",$args['id']);
+		$sql = 'SELECT * FROM Tag WHERE ';
+		for($i = 0; $i < count($id_array)-1; $i++) {
+			$sql .= 'nom = '.$id_array[$i].' OR ';
+		}
+		$sql .= 'id = '.$id_array[$i].';';
+		$query = $this->db->query($sql);
+		$result = $query->fetchAll();
+		if (count($result) == 0) {
+			for($i = 0; $i < count($id_array)-1; $i++) {
+				$request .= "INSERT INTO Tag ('nom') VALUES('".$id_array[$i]."');";
+			}
+		$query = $this->db->query($request);
+		$response->status = 200;
+  } catch (Exception $e){
+    $response->status = 400;
+  }
+  return $response->withJson(http_response_code());
 });
 
 // update post
