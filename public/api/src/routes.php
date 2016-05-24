@@ -193,3 +193,24 @@ $app->put('/tags', function($request, $response, $args) {
   return $response->withJson(http_response_code());  
 
 });
+
+// get like
+$app->get('/post/{id}/likes', function($request, $response, $args){
+  $sql = 'SELECT likes FROM Post WHERE id='=.args['id'];
+  $query = $this->db->query($sql);
+  $result = $query->fetchAll();
+  return $response->withJson($result);
+});
+
+// post like
+$app->post('/post/{id}/likes'), function($request, $response, $args){
+
+    $sql = 'SELECT likes FROM Post WHERE id='=.args['id'];
+    $query = $this->db->query($sql);
+    $result = $query->fetchAll();
+
+    $result+=1;
+
+    return $response->withJson($result);
+
+});
