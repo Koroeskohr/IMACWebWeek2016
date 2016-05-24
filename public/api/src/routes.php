@@ -47,41 +47,9 @@ $app->get('/topics', function($request, $response, $args) {
     return $response->withJson($result);
 });
 
-
-// /topics POST
-// $app->post('/topics', function ($request, $response, $args) {
-//     $array = $request->getQueryParams();
-//     $array = $request->getParams();
-//     return $response->withJson($array);
-// });
-
-// /topics PATCH
-// $app->put('/topics', function($request, $response, $args) {
-//   $sql = 'SELECT * FROM Sujet WHERE id='.$args['id'];
-//   $topic = $this->db->query($sql);
-
-//   if($topic->fetch()){
-//     $post = $app->request()->put();
-//     $result = $topic->update($post);
-//     return $app->response->setStatus(200);
-//   }
-//   else{
-//     return $app->response->setStatus(418); //Trololololol EN FAIT C'EST (400)
-//   }
-
-// });
-
-
 /* GET POST UPDATE DELETE*/
 ///a partir de la
 //jointure
-
-// $app->delete('/topics', function($request, $response, $args) {
-//   $query = 'DELETE FROM Sujet WHERE id='.$args['id'];
-//   $query = $app->request->post();
-//   $result = $query->fetchAll();
-//   return $app->response->setStatus(200);
-// });
 
 $app->post('/topics', function($request, $response, $args) {
   try{
@@ -143,6 +111,7 @@ $app->get('/tag/{id}/posts', function($request, $response, $args) {
   return $query;
 });
 
+// delete topic id
 $app->delete('/topic/{id}', function($request, $response, $args) {
   $sql = "SELECT * FROM Sujet WHERE id = ".$args["id"];
   $query = $this->db->query($sql);
@@ -159,7 +128,6 @@ $app->delete('/topic/{id}', function($request, $response, $args) {
 
 // ID topic
 
-
 // tags sur le post
 $app->get('/post/{id}/tags', function($request, $response, $args) {
 	$sql = 'SELECT * FROM Tagge WHERE idPost='.$args['id'];
@@ -167,8 +135,8 @@ $app->get('/post/{id}/tags', function($request, $response, $args) {
  	$result = $query->fetchAll();
   return $response->withJson($result);
 });
-//delete post->tag
 
+//delete post->tag
 $app->delete('/post/{id}/tags', function($request, $response, $args) {
   $query = 'DELETE FROM Tagge WHERE idPost='.args['id'].' AND idTag='.$args['tag_id'];
   $query = $app->request->post();
@@ -179,6 +147,7 @@ $app->delete('/post/{id}/tags', function($request, $response, $args) {
 
 // post - creer un post
 $app->post('/post/{id}/tags', function($request, $response, $args) {
+
 	/* $id_array = explode(",",$args['id']);
     $sql = 'SELECT * FROM Comments WHERE ';
     for($i = 0; $i < count($id_array)-1; $i++) {
@@ -212,8 +181,7 @@ $app->post('/post/{id}/tags', function($request, $response, $args) {
   return $response->withJson(http_response_code());
 });
 
-// update post
-
+// update tags
 $app->put('/tags', function($request, $response, $args) {
   $sql = 'SELECT * FROM Tag where id='.args['tag_id'];
   $tag = $this->db->query($sql);
@@ -221,18 +189,11 @@ $app->put('/tags', function($request, $response, $args) {
   if($tag->fetch()){
     $post = $app->request()->put();
     $result = $tag->update($post);
-    return $app->response->setStatus(200);
+    $response->status(200);
   }
   else{
-    return $app->response->setStatus(418); //Trololololol EN FAIT C'EST (400)
+    $response->status(400);
   }
+  return $response->withJson(http_response_code());  
 
-});
-
-//delete post
-$app->delete('/posts', function($request, $response, $args) {
-  $query = 'DELETE FROM Post WHERE idPost='.args['id'];
-  $query = $app->request->post();
-  $result = $query->fetchAll();
-  return $app->response->setStatus(200);
 });
