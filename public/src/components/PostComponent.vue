@@ -1,9 +1,9 @@
 <template>
   <article class="post">
     <div class="info">
-      <span class="date">{{ post.date }}</span>
+      <span class="date">{{ post.date | fromNow }} ago</span>
     </div>
-    <img src="{{ post.image }}" alt="">
+    <img :src="post.image">
     <h1 class="titre">{{ post.titre }}</h1>
     <div class="text">
       {{ post.texte }}
