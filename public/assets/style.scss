@@ -5,7 +5,9 @@ $title-font: 'Open Sans', sans-serif;
 html {
   font-size: 67.5%;
 }
-
+* {
+  font-family: $title-font;
+}
 
 @import 'meyer-reset',
         'post',
