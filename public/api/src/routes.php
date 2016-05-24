@@ -68,6 +68,13 @@ $app->post('/topics', function ($request, $response, $args) {
 /* GET POST UPDATE DELETE*/
 ///a partir de la
 //jointure
+$app->delete('/topics', function($request, $response, $args) {
+  $query = 'DELETE FROM Sujet WHERE id='.$args['id'];
+  $query = $app->request->post();
+  $result = $query->fetchAll();
+  return $response->withJson($result);
+});
+
 
 $app->get('/tag/{id}/posts', function($request, $response, $args) {
   $sql = 'SELECT * FROM Post INNER JOIN Tagge ON idPost=idTag';
@@ -96,6 +103,14 @@ $app->get('/post/{id}/tags', function($request, $response, $args) {
   return $response->withJson($result);
 });
 
+//delete post->tag
+$app->delete('/post/{id}/tags', function($request, $response, $args) {
+  $query = 'DELETE FROM Tagge WHERE idPost='.args['id'].' AND idTag='.$args['tag_id'];
+  $query = $app->request->post();
+  $result = $query->fetchAll();
+  return $response->withJson($result);
+});
+
 
 // post - creer un post
 $app->post('/tags', function($request, $response, $args) {
@@ -116,8 +131,9 @@ $app->patch('/post/{id}/tags', function($request, $response, $args) {
 
 //delete post
 $app->delete('/post/{id}/tags', function($request, $response, $args) {
-  $query = [ "key" => "value" ];
-    $result = $query->fetchAll();
+  $query = 'DELETE FROM Post WHERE idPost='.args['id'];
+  $query = $app->request->post();
+  $result = $query->fetchAll();
   return $response->withJson($result);
 });
 
