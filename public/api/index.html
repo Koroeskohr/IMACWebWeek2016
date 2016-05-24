@@ -5,10 +5,24 @@
     <title>Document</title>
 </head>
 <body>
+    <!--<p>Fomulaire pour créer un topic.</p>
     <form action="./public/topics" method="post">
         <input type="text" value="Titre" name="titre">
-        <!-- <input type="text" value="Description" name="description"> -->
         <input type="submit">
+    </form>
+
+    <p>Fomulaire pour modifier un topic.
+    <form action="./public/topic/2" method="post" >
+        <input type="hidden" name="_METHOD" value="PUT">
+        <input type="text" value="Titre" name="titre">
+        <input type="submit">
+    </form>-->
+
+    <p>Fomulaire pour supprimer un topic.
+    <form action="./public/topic/1" method="post" >
+        <input type="hidden" name="_METHOD" value="DELETE">
+        <!-- <input type="text" value="Description" name="description"> -->
+        <input type="submit" value="Delete Topic 2">
     </form>
 </body>
 </html>
