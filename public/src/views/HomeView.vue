@@ -1,8 +1,14 @@
 <template>
   <div class="home">
     HomePage
-
-
+    <div class="brand">
+      
+    </div>
+    <div class="topic-list col-sm-6" v-for="topic in topics">
+      <span class="topic">
+        {{ topic.titre }}
+      </span>
+    </div>
   </div>
 </template>
 
