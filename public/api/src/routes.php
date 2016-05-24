@@ -11,14 +11,6 @@
 //     return $this->renderer->render($response, 'index.phtml', $args);
 // });
 
-// topic/*/posts
-$app->get('/topic/{id}/posts', function($request, $response, $args) {
-    $sql = 'SELECT * FROM Post WHERE sujet = '.$args['id'];
-    $query = $this->db->query($sql);
-    $result = $query->fetchAll();
-    return $response->withJson($result);
-});
-
 // /post/*/comments
 $app->get('/post/{id}/comments', function($request, $response, $args) {
     $id_array = explode(",",$args['id']);
@@ -27,21 +19,6 @@ $app->get('/post/{id}/comments', function($request, $response, $args) {
         $sql .= 'id = '.$id_array[$i].' OR ';
     }
     $sql .= 'id = '.$id_array[$i].';';
-    $query = $this->db->query($sql);
-    $result = $query->fetchAll();
-    return $response->withJson($result);
-});
-
-$app->get('/post/{id}', function($request, $response, $args) {
-    $sql = 'SELECT * FROM Post WHERE id='.$args['id'];
-    $query = $this->db->query($sql);
-    $result = $query->fetchAll();
-    return $response->withJson($result);
-});
-
-// /topics GET
-$app->get('/topics', function($request, $response, $args) {
-    $sql = 'SELECT * FROM Sujet';
     $query = $this->db->query($sql);
     $result = $query->fetchAll();
     return $response->withJson($result);
@@ -76,12 +53,14 @@ $app->get('/topics', function($request, $response, $args) {
 ///a partir de la
 //jointure
 
-// $app->delete('/topics', function($request, $response, $args) {
-//   $query = 'DELETE FROM Sujet WHERE id='.$args['id'];
-//   $query = $app->request->post();
-//   $result = $query->fetchAll();
-//   return $app->response->setStatus(200);
-// });
+/* TOPICS */
+
+$app->get('/topics', function($request, $response, $args) {
+    $sql = 'SELECT * FROM Sujet';
+    $query = $this->db->query($sql);
+    $result = $query->fetchAll();
+    return $response->withJson($result);
+});
 
 $app->post('/topics', function($request, $response, $args) {
   try{
@@ -120,21 +99,78 @@ $app->put('/topic/{id}', function($request, $response, $args) {
   return $response->withJson(http_response_code());
 });
 
-// $app->delete('/topic/{id}', function($request, $response, $args) {
-//   try {
-//     $sql = "SELECT * FROM Sujet WHERE id = ".$args["id"];
-//     $query = $this->db->query($sql);
-//     $result = $query->fetchAll();
-//     if (count($result) == 1) {
-//         $sql = "DELETE FROM Sujet WHERE id=".$args['id'];
-//         $query = $this->db->query($sql);
-//     }
-//     $response->status = 200;
-//   } catch (Exception $e){
-//     $response->status = 400;
-//   }
-//   return $response->withJson(http_response_code());
-// });
+$app->delete('/topic/{id}', function($request, $response, $args) {
+  try{
+    $sql = "SELECT * FROM Sujet WHERE id = ".$args["id"];
+    $query = $this->db->query($sql);
+    $result = $query->fetchAll();
+    if (count($result) == 1) {
+      $sql = "DELETE FROM Sujet WHERE id = ".$args["id"];
+      $query = $this->db->query($sql);
+    }
+    $response->status = 200;
+  } catch(Exception $e) {
+    $response->status = 400;
+  }
+  return $response->withJson(http_response_code());
+});
+
+/* POSTS */
+
+$app->get('/topic/{id}/posts', function($request, $response, $args) {
+    $sql = 'SELECT * FROM Post WHERE sujet = '.$args['id'];
+    $query = $this->db->query($sql);
+    $result = $query->fetchAll();
+    return $response->withJson($result);
+});
+
+$app->get('/post/{id}', function($request, $response, $args) {
+    $sql = 'SELECT * FROM Post WHERE id='.$args['id'];
+    $query = $this->db->query($sql);
+    $result = $query->fetchAll();
+    return $response->withJson($result);
+});
+
+$app->post('/topic/{id}/posts', function($request, $response, $args) {
+  try{
+    $body        = $request->getParsedBody();
+    $titre       = filter_var($body['titre'], FILTER_SANITIZE_STRING);
+    $author      = filter_var($body['auteur'], FILTER_SANITIZE_STRING);
+    $img_url     = filter_var($body['img_url'], FILTER_SANITIZE_STRING);
+    $description = filter_var($body['description'], FILTER_SANITIZE_STRING);
+    if(empty($image)){
+      $sql = "INSERT INTO Post (`titre`, `auteur`,`image`,`texte`,`sujet`) VALUES ('".$titre."','".$author."','".$img_url."','".$description."','".$args['id']."');'";
+    } else {
+      $sql = "INSERT INTO Post (`titre`, `auteur`,`texte`,`sujet`) VALUES ('".$titre."','".$author."','".$description."','".$args['id']."');'";
+    }
+
+    $query = $this->db->query($sql);
+    // $result = $query->fetchAll();
+    $response->status = 200;
+  } catch (Exception $e){
+    $result = NULL;
+    $response->status = 400;
+  }
+  // var_dump($result);
+  return $response->withJson(http_response_code());
+});
+
+
+
+$app->get('/posts', function($request, $response, $args) {
+  $sql = 'SELECT * FROM Post';
+  $query = $this->db->query($sql);
+  $result = $query->fetchAll();
+  return $response->withJson($result);
+});
+
+$app->get('/comments', function($request, $response, $args) {
+  $sql = 'SELECT * FROM Comments';
+  $query = $this->db->query($sql);
+  $result = $query->fetchAll();
+  return $response->withJson($result);
+});
+
 
 $app->get('/tag/{id}/posts', function($request, $response, $args) {
   $sql = 'SELECT * FROM Post INNER JOIN Tagge ON idTag='.$args['id'];
@@ -143,21 +179,6 @@ $app->get('/tag/{id}/posts', function($request, $response, $args) {
   return $query;
 });
 
-$app->delete('/topic/{id}', function($request, $response, $args) {
-  $sql = "SELECT * FROM Sujet WHERE id = ".$args["id"];
-  $query = $this->db->query($sql);
-  $result = $query->fetchAll();
-  if (count($result) == 1) {
-    $sql = "DELETE FROM Sujet WHERE id = ".$args["id"];
-    $query = $this->db->query($sql);
-    return "deleted";
-  }
-  return "beurk";
-});
-
-//jointure
-
-// ID topic
 
 
 // tags sur le post
