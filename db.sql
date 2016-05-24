@@ -63,7 +63,7 @@ INSERT INTO `Sujet` (`id`, `titre`) VALUES
 DROP TABLE IF EXISTS `Tag`;
 CREATE TABLE `Tag` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `nom` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `nom` varchar(15) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
@@ -105,4 +105,4 @@ INSERT INTO `Tagge` (`idPost`, `idTag`) VALUES
 (5,	7),
 (5,	10);
 
--- 2016-05-24 08:21:19
+-- 2016-05-24 09:50:27
