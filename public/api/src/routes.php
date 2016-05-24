@@ -72,7 +72,7 @@ $app->delete('/topics', function($request, $response, $args) {
   $query = 'DELETE FROM Sujet WHERE id='.$args['id'];
   $query = $app->request->post();
   $result = $query->fetchAll();
-  return $response->withJson($result);
+  return $app->response->setStatus(200);
 });
 
 
@@ -108,7 +108,7 @@ $app->delete('/post/{id}/tags', function($request, $response, $args) {
   $query = 'DELETE FROM Tagge WHERE idPost='.args['id'].' AND idTag='.$args['tag_id'];
   $query = $app->request->post();
   $result = $query->fetchAll();
-  return $response->withJson($result);
+  return $app->response->setStatus(200);
 });
 
 
@@ -134,7 +134,7 @@ $app->delete('/post/{id}/tags', function($request, $response, $args) {
   $query = 'DELETE FROM Post WHERE idPost='.args['id'];
   $query = $app->request->post();
   $result = $query->fetchAll();
-  return $response->withJson($result);
+  return $app->response->setStatus(200);
 });
 
 
