@@ -16,11 +16,14 @@
 
 .stats {
   display: flex;
-  align-items: center;  
+  align-items: center;
+  color: #fff;  
   background: $red;
   height: 10rem;
   text-align: center;
-  div {
+
+  span.number {
+    font-size: 2.4rem;
   }
 } 
 
