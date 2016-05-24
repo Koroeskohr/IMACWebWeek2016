@@ -60,9 +60,20 @@ $app->post('/topics', function ($request, $response, $args) {
 });
 
 // /topics PATCH
-// $app->patch('/topics/', function($request, $response, $args) {
+$app->put('/topics', function($request, $response, $args) {
+  $sql = 'SELECT * FROM Sujet WHERE id='.$args['id'];
+  $topic = $this->db->query($sql);
+  
+  if($topic->fetch()){
+    $post = $app->request()->put();
+    $result = $topic->update($post);
+    return $app->response->setStatus(200);
+  }
+  else{
+    return $app->response->setStatus(418); //Trololololol
+  }
 
-// });
+});
 
 
 /* GET POST UPDATE DELETE*/
