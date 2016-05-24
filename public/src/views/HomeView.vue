@@ -1,13 +1,16 @@
 <template>
   <div class="home">
-    HomePage
     <div class="brand">
-      
+      <img src="assets/img" alt="">
+      <h1>ReddBook</h1>
+      <h2>Allez viens, on est bien !</h2>
     </div>
     <div class="topic-list col-sm-6" v-for="topic in topics">
-      <span class="topic">
-        {{ topic.titre }}
-      </span>
+      <a v-link="'/topic/' + topic.id">
+        <span class="topic">
+          {{ topic.titre }}
+        </span>
+      </a>
     </div>
   </div>
 </template>
