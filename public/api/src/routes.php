@@ -56,20 +56,32 @@ $app->get('/topics', function($request, $response, $args) {
 // });
 
 // /topics PATCH
-// $app->patch('/topics/', function($request, $response, $args) {
+$app->put('/topics', function($request, $response, $args) {
+  $sql = 'SELECT * FROM Sujet WHERE id='.$args['id'];
+  $topic = $this->db->query($sql);
 
-// });
+  if($topic->fetch()){
+    $post = $app->request()->put();
+    $result = $topic->update($post);
+    return $app->response->setStatus(200);
+  }
+  else{
+    return $app->response->setStatus(418); //Trololololol
+  }
+
+});
 
 
 /* GET POST UPDATE DELETE*/
 ///a partir de la
 //jointure
-// $app->delete('/topics', function($request, $response, $args) {
-//   $query = 'DELETE FROM Sujet WHERE id='.$args['id'];
-//   $query = $app->request->post();
-//   $result = $query->fetchAll();
-//   return $response->withJson($result);
-// });
+
+$app->delete('/topics', function($request, $response, $args) {
+  $query = 'DELETE FROM Sujet WHERE id='.$args['id'];
+  $query = $app->request->post();
+  $result = $query->fetchAll();
+  return $app->response->setStatus(200);
+});
 
 
 $app->get('/tag/{id}/posts', function($request, $response, $args) {
@@ -105,12 +117,13 @@ $app->get('/post/{id}/tags', function($request, $response, $args) {
   return $response->withJson($result);
 });
 //delete post->tag
-// $app->delete('/post/{id}/tags', function($request, $response, $args) {
-//   $query = 'DELETE FROM Tagge WHERE idPost='.args['id'].' AND idTag='.$args['tag_id'];
-//   $query = $app->request->post();
-//   $result = $query->fetchAll();
-//   return $response->withJson($result);
-// });
+
+$app->delete('/post/{id}/tags', function($request, $response, $args) {
+  $query = 'DELETE FROM Tagge WHERE idPost='.args['id'].' AND idTag='.$args['tag_id'];
+  $query = $app->request->post();
+  $result = $query->fetchAll();
+  return $app->response->setStatus(200);
+});
 
 
 // post - creer un post
@@ -131,11 +144,11 @@ $app->patch('/post/{id}/tags', function($request, $response, $args) {
 });
 
 //delete post
-$app->delete('/post/{id}/tags', function($request, $response, $args) {
+$app->delete('/posts', function($request, $response, $args) {
   $query = 'DELETE FROM Post WHERE idPost='.args['id'];
   $query = $app->request->post();
   $result = $query->fetchAll();
-  return $response->withJson($result);
+  return $app->response->setStatus(200);
 });
 
 

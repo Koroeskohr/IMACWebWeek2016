@@ -4,3 +4,4 @@ public/node_modules/
 public/api/vendor/
 
 public/api/logs/*.log
+public/assets/.sass-cache/
