@@ -18,11 +18,18 @@
         <input type="submit">
     </form>-->
 
-    <p>Fomulaire pour supprimer un topic.
+    <!--<p>Fomulaire pour supprimer un topic.
     <form action="./public/topic/1" method="post" >
         <input type="hidden" name="_METHOD" value="DELETE">
         <!-- <input type="text" value="Description" name="description"> -->
-        <input type="submit" value="Delete Topic 2">
+       <!-- <input type="submit" value="Delete Topic 2">-->
+   <!-- </form>-->
+   
+   <p>Fomulaire pour créer un tag.</p>
+    <form action="./public/post/1/tags" method="post" >
+        <input type="hidden" name="_METHOD" value="POST">
+        <input type="text" value="Un,Deux,Trois Swagg" name="tags">
+        <input type="submit">
     </form>
 </body>
 </html>
