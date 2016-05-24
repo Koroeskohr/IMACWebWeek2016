@@ -66,7 +66,7 @@ $app->put('/topics', function($request, $response, $args) {
     return $app->response->setStatus(200);
   }
   else{
-    return $app->response->setStatus(418); //Trololololol
+    return $app->response->setStatus(418); //Trololololol EN FAIT C'EST (400)
   }
 
 });
@@ -134,13 +134,21 @@ $app->post('/tags', function($request, $response, $args) {
   return $response->withJson($result);
 });
 
-
 // update post
 
-$app->patch('/post/{id}/tags', function($request, $response, $args) {
-  $query = [ "key" => "value" ];
-   $result = $query->fetchAll();
-  return $response->withJson($result);
+$app->put('/tags', function($request, $response, $args) {
+  $sql = 'SELECT * FROM Tag where id='.args['tag_id'];
+  $tag = $this->db->query($sql);
+
+  if($tag->fetch()){
+    $post = $app->request()->put();
+    $result = $tag->update($post);
+    return $app->response->setStatus(200);
+  }
+  else{
+    return $app->response->setStatus(418); //Trololololol EN FAIT C'EST (400)
+  }
+
 });
 
 //delete post
