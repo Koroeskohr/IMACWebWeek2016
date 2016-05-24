@@ -130,7 +130,7 @@ $app->patch('/post/{id}/tags', function($request, $response, $args) {
 });
 
 //delete post
-$app->delete('/post/{id}/tags', function($request, $response, $args) {
+$app->delete('/posts', function($request, $response, $args) {
   $query = 'DELETE FROM Post WHERE idPost='.args['id'];
   $query = $app->request->post();
   $result = $query->fetchAll();
