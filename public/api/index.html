@@ -17,7 +17,6 @@
         <input type="text" value="Titre" name="titre">
         <input type="submit">
     </form>
-
     <p>Fomulaire pour supprimer un topic (le 7).
     <form action="./public/topic/7" method="post" >
         <input type="hidden" name="_METHOD" value="DELETE">
@@ -31,6 +30,12 @@
         <input type="text" value="Image" name="img_url">
         <textarea name="description"></textarea>
         <input type="submit" value="Créer un post dans topic 3">
+
+   <p>Fomulaire pour créer un tag.</p>
+    <form action="./public/post/1/tags" method="post" >
+        <input type="hidden" name="_METHOD" value="POST">
+        <input type="text" value="Un,Deux,Trois Swagg" name="tags">
+        <input type="submit">
     </form>
 </body>
 </html>
