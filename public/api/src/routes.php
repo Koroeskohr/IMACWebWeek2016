@@ -56,7 +56,7 @@ $app->get('/topics', function($request, $response, $args) {
 // /topics POST
 $app->post('/topics', function ($request, $response, $args) {
     $array = $app->request->post();
-    return $array;
+    return $response->withJson($result);;
 });
 
 // /topics PATCH
@@ -86,7 +86,7 @@ $app->get('/topic/{id}', function($request, $response, $args) {
   $query = $this->db->query($sql);
   $result = $query->fetchAll();
   return $response->withJson($result);
-});	
+});
 
 // tags sur le post
 $app->get('/post/{id}/tags', function($request, $response, $args) {
