@@ -11,14 +11,9 @@
 //     return $this->renderer->render($response, 'index.phtml', $args);
 // });
 
-$app->get('/route/{id}', function($request, $response, $args) {
-  $array = [ "id" => $args['id'] ];
-  return $response->withJson($array);
-});
-
 // topic/*/posts
 $app->get('/topic/{id}/posts', function($request, $response, $args) {
-    $sql = 'SELECT DISTINCT * FROM Post INNER JOIN Sujet ON Post.sujet = '.$args['id'];
+    $sql = 'SELECT * FROM Post WHERE sujet = '.$args['id'];
     $query = $this->db->query($sql);
     $result = $query->fetchAll();
     return $response->withJson($result);
@@ -54,20 +49,33 @@ $app->get('/topics', function($request, $response, $args) {
 
 
 // /topics POST
-$app->post('/topics', function ($request, $response, $args) {
-    $array = $app->request->post();
-    return $response->withJson($result);;
-});
+// $app->post('/topics', function ($request, $response, $args) {
+//     $array = $request->getQueryParams();
+//     $array = $request->getParams();
+//     return $response->withJson($array);
+// });
 
 // /topics PATCH
-// $app->patch('/topics/', function($request, $response, $args) {
+$app->put('/topics', function($request, $response, $args) {
+  $sql = 'SELECT * FROM Sujet WHERE id='.$args['id'];
+  $topic = $this->db->query($sql);
 
-// });
+  if($topic->fetch()){
+    $post = $app->request()->put();
+    $result = $topic->update($post);
+    return $app->response->setStatus(200);
+  }
+  else{
+    return $app->response->setStatus(418); //Trololololol EN FAIT C'EST (400)
+  }
+
+});
 
 
 /* GET POST UPDATE DELETE*/
 ///a partir de la
 //jointure
+
 $app->delete('/topics', function($request, $response, $args) {
   $query = 'DELETE FROM Sujet WHERE id='.$args['id'];
   $query = $app->request->post();
@@ -77,10 +85,10 @@ $app->delete('/topics', function($request, $response, $args) {
 
 
 $app->get('/tag/{id}/posts', function($request, $response, $args) {
-  $sql = 'SELECT * FROM Post INNER JOIN Tagge ON idPost=idTag';
+  $sql = 'SELECT * FROM Post INNER JOIN Tagge ON idTag='.$args['id'];
   $query = $this->db->query($sql);
   $result = $query->fetchAll();
-  return $response->withJson($result);
+  return $query;
 });
 
 //jointure
@@ -88,11 +96,17 @@ $app->get('/tag/{id}/posts', function($request, $response, $args) {
 // ID topic
 
 
-$app->get('/topic/{id}', function($request, $response, $args) {
-  $sql = 'SELECT * FROM Sujet WHERE id='.$args['id'];
-  $query = $this->db->query($sql);
-  $result = $query->fetchAll();
-  return $response->withJson($result);
+$app->post('/topics', function($request,$response,$args) use ($app) {
+  try{
+    $titre = $app->request->post('titre');
+    var_dump($titre);
+    $sql = 'INSERT INTO Sujet VALUES '.$titre;
+    $query = $this->db->exec($sql);
+    $response->setStatus(200);
+  } catch (Exception $e) {
+    $response->setStatus(400);
+  }
+  return $response;
 });
 
 // tags sur le post
@@ -102,8 +116,8 @@ $app->get('/post/{id}/tags', function($request, $response, $args) {
  	$result = $query->fetchAll();
   return $response->withJson($result);
 });
-
 //delete post->tag
+
 $app->delete('/post/{id}/tags', function($request, $response, $args) {
   $query = 'DELETE FROM Tagge WHERE idPost='.args['id'].' AND idTag='.$args['tag_id'];
   $query = $app->request->post();
@@ -120,13 +134,21 @@ $app->post('/tags', function($request, $response, $args) {
   return $response->withJson($result);
 });
 
-
 // update post
 
-$app->patch('/post/{id}/tags', function($request, $response, $args) {
-  $query = [ "key" => "value" ];
-   $result = $query->fetchAll();
-  return $response->withJson($result);
+$app->put('/tags', function($request, $response, $args) {
+  $sql = 'SELECT * FROM Tag where id='.args['tag_id'];
+  $tag = $this->db->query($sql);
+
+  if($tag->fetch()){
+    $post = $app->request()->put();
+    $result = $tag->update($post);
+    return $app->response->setStatus(200);
+  }
+  else{
+    return $app->response->setStatus(418); //Trololololol EN FAIT C'EST (400)
+  }
+
 });
 
 //delete post
