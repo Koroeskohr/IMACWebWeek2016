@@ -5,9 +5,36 @@
     <title>Document</title>
 </head>
 <body>
+    <p>Fomulaire pour créer un topic.</p>
     <form action="./public/topics" method="post">
         <input type="text" value="Titre" name="titre">
-        <!-- <input type="text" value="Description" name="description"> -->
+        <input type="submit">
+    </form>
+
+    <p>Fomulaire pour modifier un topic.
+    <form action="./public/topic/2" method="post" >
+        <input type="hidden" name="_METHOD" value="PUT">
+        <input type="text" value="Titre" name="titre">
+        <input type="submit">
+    </form>
+    <p>Fomulaire pour supprimer un topic (le 7).
+    <form action="./public/topic/7" method="post" >
+        <input type="hidden" name="_METHOD" value="DELETE">
+        <input type="submit" value="Delete Topic 7">
+    </form>
+
+    <p>Fomulaire pour créer un post dans le sujet 3.
+    <form action="./public/topic/3/posts" method="post" >
+        <input type="text" value="Titre" name="titre">
+        <input type="text" value="Auteur" name="auteur">
+        <input type="text" value="Image" name="img_url">
+        <textarea name="description"></textarea>
+        <input type="submit" value="Créer un post dans topic 3">
+
+   <p>Fomulaire pour créer un tag.</p>
+    <form action="./public/post/1/tags" method="post" >
+        <input type="hidden" name="_METHOD" value="POST">
+        <input type="text" value="Un,Deux,Trois Swagg" name="tags">
         <input type="submit">
     </form>
 </body>
