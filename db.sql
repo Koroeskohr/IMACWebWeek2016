@@ -13,29 +13,29 @@ CREATE TABLE `Comments` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `texte` text COLLATE utf8_unicode_ci NOT NULL,
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `auteur` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
+  `auteur` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `post` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `post` (`post`),
   KEY `reponse` (`reponse`),
-  CONSTRAINT `Comments_ibfk_2` FOREIGN KEY (`reponse`) REFERENCES `Comments` (`id`),
-  CONSTRAINT `Comments_ibfk_1` FOREIGN KEY (`post`) REFERENCES `Post` (`id`)
+  CONSTRAINT `Comments_ibfk_4` FOREIGN KEY (`reponse`) REFERENCES `Comments` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `Comments_ibfk_3` FOREIGN KEY (`post`) REFERENCES `Post` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
 DROP TABLE IF EXISTS `Post`;
 CREATE TABLE `Post` (
-  `titre` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
+  `titre` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `sujet` int(10) unsigned NOT NULL,
   `likes` int(10) unsigned NOT NULL DEFAULT '0',
-  `auteur` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
+  `auteur` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `image` text COLLATE utf8_unicode_ci NOT NULL,
   `texte` text COLLATE utf8_unicode_ci NOT NULL,
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`),
   KEY `sujet` (`sujet`),
-  CONSTRAINT `Post_ibfk_1` FOREIGN KEY (`sujet`) REFERENCES `Sujet` (`id`)
+  CONSTRAINT `Post_ibfk_2` FOREIGN KEY (`sujet`) REFERENCES `Sujet` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 INSERT INTO `Post` (`titre`, `sujet`, `likes`, `auteur`, `date`, `image`, `texte`, `id`) VALUES
@@ -48,16 +48,17 @@ INSERT INTO `Post` (`titre`, `sujet`, `likes`, `auteur`, `date`, `image`, `texte
 DROP TABLE IF EXISTS `Sujet`;
 CREATE TABLE `Sujet` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `titre` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
+  `titre` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `titre` (`titre`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 INSERT INTO `Sujet` (`id`, `titre`) VALUES
-(1,	'Politics'),
+(5,	'Animals'),
 (2,	'History'),
-(3,	'Sport'),
 (4,	'Misc.'),
-(5,	'Animals');
+(1,	'Politics'),
+(3,	'Sport');
 
 DROP TABLE IF EXISTS `Tag`;
 CREATE TABLE `Tag` (
@@ -93,8 +94,8 @@ CREATE TABLE `Tagge` (
   PRIMARY KEY (`idPost`,`idTag`),
   KEY `idPost` (`idPost`),
   KEY `idTag` (`idTag`),
-  CONSTRAINT `Tagge_ibfk_1` FOREIGN KEY (`idPost`) REFERENCES `Post` (`id`),
-  CONSTRAINT `Tagge_ibfk_2` FOREIGN KEY (`idTag`) REFERENCES `Tag` (`id`)
+  CONSTRAINT `Tagge_ibfk_4` FOREIGN KEY (`idTag`) REFERENCES `Tag` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `Tagge_ibfk_3` FOREIGN KEY (`idPost`) REFERENCES `Post` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 INSERT INTO `Tagge` (`idPost`, `idTag`) VALUES
@@ -104,4 +105,4 @@ INSERT INTO `Tagge` (`idPost`, `idTag`) VALUES
 (5,	7),
 (5,	10);
 
--- 2016-05-23 14:10:45
+-- 2016-05-24 08:21:19
