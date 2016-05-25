@@ -27,7 +27,6 @@ class PostsController {
 		    $response->status = 400;
 		}
 		return $response->withJson(http_response_code());
-
 	}
 
 	public function showAll($request, $response, $args){
