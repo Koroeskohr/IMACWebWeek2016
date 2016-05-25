@@ -11,7 +11,8 @@
   export default {
     data () {
       return {
-        post: {}
+        post: {},
+        comments: {}
       }
     },
     components: { PostComponent },
