@@ -1,6 +1,7 @@
 <template>
   <div class="post-list">
     <div class="header_rubrique">
+      <h2>{{ topic.titre }}</h2>
       <h3 class="title_rubrique">Liste des posts</h3>
     </div>
     <post-component
