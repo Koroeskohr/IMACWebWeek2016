@@ -28,6 +28,21 @@ class TopicsController {
 		  return $response->withJson(http_response_code());
 	}
 
+	public function showTopic($request,$response,$args)
+	{
+		$sql = "SELECT * FROM Sujet WHERE id = ".$args["id"].";";
+  		$query = $this->app->db->query($sql);
+  		$result = $query->fetchAll();
+
+  		$sql = "SELECT * FROM Post WHERE sujet =".$args["id"].";";
+  		$query = $this->app->db->query($sql);
+  		$resultSecond = $query->fetchAll();
+
+  		$result = $result[0];
+  		$result["countPost"] = count($resultSecond);
+  		return $response->withJson($result);
+	}
+
 	public function update($request, $response, $args)
 	{
 		try {
