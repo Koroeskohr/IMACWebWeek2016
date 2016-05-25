@@ -21,6 +21,7 @@ $app->post('/post/{id_post}/comment/{id_comment}', '\CommentsController:createRe
 $app->post('/post/{id}/comments','\CommentsController:create');
 
 // Route for topics.
+$app->get('/topic/{id}','\TopicsController:showTopic');
 $app->get('/topics','\TopicsController:show');
 $app->post('/topics', '\TopicsController:create');
 $app->put('/topic/{id}','\TopicsController:update');
