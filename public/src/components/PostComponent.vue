@@ -20,9 +20,11 @@
     </div>
     <div class="row">
       <div class="col-md-12 button_post">
-        <button>
-            <span>Voir le post</span>
-        </button>
+        <a v-link="'/post/' + post.id">
+          <button>
+              <span>Voir le post</span>
+          </button>
+        </a>
       </div>
     </div>
   </article>
