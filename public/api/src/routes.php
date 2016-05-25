@@ -25,13 +25,6 @@ $app->get('/post/{id}/comments', function($request, $response, $args) {
 });
 
 
-$app->get('/post/{id}', function($request, $response, $args) {
-    $sql = 'SELECT * FROM Post WHERE id='.$args['id'];
-    $query = $this->db->query($sql);
-    $result = $query->fetchAll();
-    return $response->withJson($result);
-});
-
 /* TOPICS */
 
 $app->get('/topics', function($request, $response, $args) {
@@ -227,7 +220,7 @@ $app->put('/tags', function($request, $response, $args) {
   return $response->withJson(http_response_code());
 
 });
-
+/*
 // get like
 $app->get('/post/{id}/likes', function($request, $response, $args){
   $sql = 'SELECT likes FROM Post WHERE id='=.args['id'];
@@ -247,4 +240,4 @@ $app->post('/post/{id}/likes'), function($request, $response, $args){
 
     return $response->withJson($result);
 
-});
+});*/
