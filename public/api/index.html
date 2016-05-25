@@ -17,24 +17,44 @@
         <input type="text" value="Titre" name="titre">
         <input type="submit">
     </form>
-    <p>Fomulaire pour supprimer un topic (le 7).
-    <form action="./public/topic/7" method="post" >
+    <p>Fomulaire pour supprimer un topic (le 3).
+    <form action="./public/topic/3" method="post" >
         <input type="hidden" name="_METHOD" value="DELETE">
-        <input type="submit" value="Delete Topic 7">
+        <input type="submit" value="Delete Topic 3">
     </form>
 
-    <p>Fomulaire pour créer un post dans le sujet 3.
-    <form action="./public/topic/3/posts" method="post" >
+    <p>Fomulaire pour supprimer un post (le 3).
+    <form action="./public/post/13" method="post" >
+        <input type="hidden" name="_METHOD" value="DELETE">
+        <input type="submit" value="Delete Post 13">
+    </form>
+
+    <p>Fomulaire pour créer un post dans le sujet 4.
+    <form action="./public/topic/4/posts" method="post" >
         <input type="text" value="Titre" name="titre">
         <input type="text" value="Auteur" name="auteur">
-        <input type="text" value="Image" name="img_url">
-        <textarea name="description"></textarea>
-        <input type="submit" value="Créer un post dans topic 3">
+        <input type="text" value="Image" name="image">
+        <textarea name="contenu"></textarea>
+        <input type="submit" value="Créer un post dans topic 4">
+    </form>
 
    <p>Fomulaire pour créer un tag.</p>
-    <form action="./public/post/1/tags" method="post" >
-        <input type="hidden" name="_METHOD" value="POST">
-        <input type="text" value="Un,Deux,Trois Swagg" name="tags">
+    <form action="./public/post/23/tags" method="post" >
+        <input type="text" value="Ok" name="nomTag">
+        <input type="submit">
+    </form>
+
+    <p>Fomulaire pour poster un commentaire.</p>
+    <form action="./public/post/15/comments" method="post" >
+        <input type="text" value="Squeeze" name="auteur">
+        <input type="text" value="Lol first" name="contenu">
+        <input type="submit">
+    </form>
+
+    <p>Fomulaire pour poster un commentaire reponse.</p>
+    <form action="./public/post/15/comment/8" method="post" >
+        <input type="text" value="Squeeze" name="auteur">
+        <input type="text" value="Lol ok" name="contenu">
         <input type="submit">
     </form>
 </body>
