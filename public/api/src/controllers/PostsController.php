@@ -1,10 +1,10 @@
 <?php
 
 class PostsController {
-	protected $ci;
+	private $app;
 
-	public __construct(ContainerInterface ci) {
-		$this->ci = ci;
+	public function __construct($app) {
+		$this->app = $app;
 	}
 
 	public function createPostOnSubject($request, $response, $args){
@@ -20,7 +20,7 @@ class PostsController {
 		    } else {
 		      $sql = "INSERT INTO Post (`titre`, `auteur`, `image`, `texte`, `sujet`) VALUES ('".$titre."', '".$auteur."', '".$image."', '".$texte."', '".$args["id"]."');";
 		    }
-		    $query = $this->db->query($sql);
+		    $query = $this->app->db->query($sql);
 
 		    $response->status = 200;
 		} catch (Exception $e){
@@ -32,43 +32,44 @@ class PostsController {
 
 	public function showAll($request, $response, $args){
 		$sql = "SELECT * FROM Post";
-		$query = $this->db->query($sql);
+		$query = $this->app->db->query($sql);
 		$result = $query->fetchAll();
 		return $response->withJson($result);
 	}
 
 	public function showOnePost($request, $response, $args){
 		  $sql = "SELECT * FROM Post WHERE id = ".$args["id"].";";
-		  $query = $this->db->query($sql);
+		  $query = $this->app->db->query($sql);
 		  $result = $query->fetchAll();
 		  return $response->withJson($result);
 	}
 
 	public function showPostFromSubject($request, $response, $args){
 		$sql = "SELECT * FROM Post WHERE sujet =".$args["id"].";";
-		$query = $this->db->query($sql);
+		$query = $this->app->db->query($sql);
 		$result = $query->fetchAll();
 		return $response->withJson($result);
 	}
 
 	public function showPostFromTags($request, $response, $args){
 		  $sql = "SELECT * FROM Post INNER JOIN Tagge ON Tagge.idTag = ".$args["id"]." WHERE Tagge.idPost = Post.id;";
-		  $query = $this->db->query($sql);
+		  $query = $this->app->db->query($sql);
 		  $result = $query->fetchAll();
 		  return $response->withJson($result);
 	}
 
 	public function deletePost($request, $response, $args){
 		$sql = "SELECT * FROM Post WHERE id = ".$args["id"].";";
-		$query = $this->db->query($sql);
+		$query = $this->app->db->query($sql);
 		$result = $query->fetchAll();
 		if (count($result) == 1) {
 			$sql = "DELETE FROM Post WHERE id = ".$args["id"];
-			$query = $this->db->query($sql);
+			$query = $this->app->db->query($sql);
 			$response->status = 200;
 		} else {
 			$response->status = 400;
 		}
+		return $response->withJson(http_response_code());
 	}
 }
 
