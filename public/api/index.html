@@ -33,14 +33,20 @@
     <form action="./public/topic/3/posts" method="post" >
         <input type="text" value="Titre" name="titre">
         <input type="text" value="Auteur" name="auteur">
-        <input type="text" value="Image" name="img_url">
-        <textarea name="description"></textarea>
+        <input type="text" value="Image" name="image">
+        <textarea name="contenu"></textarea>
         <input type="submit" value="Créer un post dans topic 3">
 
    <p>Fomulaire pour créer un tag.</p>
     <form action="./public/post/1/tags" method="post" >
-        <input type="hidden" name="_METHOD" value="POST">
         <input type="text" value="Un,Deux,Trois Swagg" name="tags">
+        <input type="submit">
+    </form>
+
+    <p>Fomulaire pour poster un commentaire.</p>
+    <form action="./public/post/1/comments" method="post" >
+        <input type="text" value="Squeeze" name="auteur">
+        <input type="text" value="Lol first" name="texte">
         <input type="submit">
     </form>
 </body>
