@@ -1,11 +1,27 @@
 $red: #e74c3c;
 $grey: #323232;
+$white: #fff;
+$clear_grey: #f3f3f3;
+
+
 $title-font: 'Open Sans', sans-serif;
 
 html {
   font-size: 67.5%;
 }
+* {
+  font-family: $title-font;
+}
 
+body {
+  background: $clear_grey;
+}
+
+@media (max-width: 992px) {
+  header{
+    text-align: center;
+  }
+}
 
 @import 'meyer-reset',
         'post',

@@ -1,3 +1,48 @@
+.home .info {
+  text-align: center;
+  h1 {
+    font-size: 4.8rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+  }
+  h2 {
+    font-size: 2rem;
+  }
+}
+
+.red {
+  color: $red;
+}
+
+.stats {
+  display: flex;
+  align-items: center;
+  color: #fff;  
+  background: $red;
+  height: 10rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  span.number {
+    font-weight: 800;
+    display: block;
+    font-size: 3.6rem;
+  }
+}
+
 .topic-list {
   text-align: center;
+  .topic-link {
+    letter-spacing: 0.1rem;
+    color: #000;
+    display: inline-block;
+    border: 1px solid $red;
+    width: 90%;
+    padding: 0.8rem;
+    border-radius: 2rem;
+    margin-bottom: 3rem;
+    &:hover {
+      background-color: $red;
+      color: #fff;
+    }
+  }
 }
