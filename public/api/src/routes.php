@@ -60,6 +60,24 @@ $app->post('/post/{id_post}/comments', function($request, $response, $args) {
   return $response->withJson(http_response_code());
 });
 
+$app->post('/post/{id_post}/comment/{id_comment}', function($request, $response, $args) {
+  try{
+    $body   = $request->getParsedBody();
+    $texte  = filter_var($body['texte'], FILTER_SANITIZE_STRING);
+    $auteur = filter_var($body['auteur'], FILTER_SANITIZE_STRING);
+    // var_dump($texte);
+    // var_dump($auteur);
+    $sql    = "INSERT INTO Comments (`texte`, `auteur`,`post`,`reponse`) VALUES ('".$texte."','".$auteur."','".$args['id_post']."','".$args['id_comment']."');";
+    $query  = $this->db->query($sql);
+    $result = $query->fetchAll();
+    var_dump($response->withJson($result));
+    $response->status = 200;
+  } catch (Exception $e){
+    $response->status = 400;
+  }
+  return $response->withJson(http_response_code());
+});
+
 
 $app->get('/post/{id}', function($request, $response, $args) {
   $sql = "SELECT * FROM Post WHERE id = ".$args["id"].";";
