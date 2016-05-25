@@ -1,17 +1,34 @@
 <template>
-  <article class="post">
-    <div class="info">
-      <span class="date">{{ post.date | fromNow }} ago</span>
+<div class="row">
+  <article class="post col-sm-10 col-sm-offset-1">
+    <div class="row">
+      <div class="col-sm-6 img">
+        <img :src="post.image">
+      </div>
+      <div class="col-sm-6 info">
+        <div class="title_post"><h1 class="titre">{{ post.titre }}</h1></div>
+        <div class="date"><span>Proposé par {{ post.auteur }} il y a {{ post.date | fromNow }}</span><br></div>
+        <div class="text">
+          {{ post.texte }}
+        </div>
+        <div class="nb_likes">
+          <span class="likes">
+            {{ post.likes }} likes
+          </span>
+        </div>
+      </div>
     </div>
-    <img :src="post.image">
-    <h1 class="titre">{{ post.titre }}</h1>
-    <div class="text">
-      {{ post.texte }}
+    <div class="row">
+      <div class="col-md-12 button_post">
+        <button>
+            <span>Voir le post</span>
+        </button>
+      </div>
     </div>
-    <span class="likes">
-      {{ post.likes }}
-    </span>
   </article>
+</div>
+  
+  
 </template>
 
 <script>
@@ -24,6 +41,16 @@
       return {
         comments: []
       }
+    },
+    created () {
+      this.$http.get('post/' + this.post.id + "/comments").then(
+          (response) => {
+            this.comments = response.data
+          },
+          (response) => {
+            console.log("comment " + this.post.id + " fail " + response);
+          }
+        )
     }
   }
 

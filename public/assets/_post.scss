@@ -1,0 +1,117 @@
+
+.post{
+  background-color: $white;
+  clear: both;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.header_rubrique{
+  margin: 30px 10px;
+  text-align: center;
+}
+
+.title_rubrique{
+  text-transform: uppercase;
+  color: $red;
+  letter-spacing: 5px;
+  font-weight: 800;
+  font-size: 20px;
+}
+
+.post .title_post{
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.post .titre{
+  font-size: 20px;
+  letter-spacing: 3px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.post .img{
+  height: 100%;
+  box-sizing: border-box;
+  padding: 2.6rem;
+}
+
+.post img{
+  width:100%;
+  float: left;
+  display: block;
+  box-sizing: border-box;
+
+}
+
+.button_post{
+  margin: 10px 10px 30px 10px;
+  text-align: center;
+}
+
+.button_post button{
+  background-color: $white;
+  text-align: center;
+  border-radius: 50px;
+  border: 1px solid $red;
+  padding:10px 40px;
+  flex-flow: row wrap;
+}
+
+.button_post button:hover{
+  background-color: $red;
+  color: $white;
+}
+
+.button_post button span{
+  color: $red;
+  font-size: 18px;
+}
+
+.button_post button:hover span{
+  color: $white;
+  font-size: 18px;
+}
+
+.post .text{
+  line-height: 25px;
+  letter-spacing: 1px;
+}
+
+.post .date, .post .text{
+  margin: 20px 0px;
+}
+
+.post .date span{
+  color: $red;
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.post .info{
+  padding: 0 2.6rem;
+}
+
+.post .nb_likes{
+  background-color: $clear_grey;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: $red;
+  display: inline-block;
+}
+
+@media (max-width: 992px) {
+
+  .post .info{
+    text-align: center;
+    padding: 30px;
+  }
+
+  .post .date, .post .text{
+    margin: 5px 0px;
+  }
+
+}

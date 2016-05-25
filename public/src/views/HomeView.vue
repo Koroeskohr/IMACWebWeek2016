@@ -3,20 +3,24 @@
     <div class="row">
       <div class="info col-sm-6 col-sm-offset-3">
         <img src="/assets/img/logo.png">
-        <h1><span class="red">Redd</span>Book</h1>
+        <h1><span class="red">Redd</span>book</h1>
         <h2>Allez viens, on est bien !</h2>
       </div>
     </div>
     <div class="row">
       <div class="stats col-sm-12">
-        <div class="topics col-sm-4">
-          <span class="number">{{ topics.count }}</span> sujets
-        </div>
-        <div class="posts col-sm-4">
-          <span class="number">{{ posts.count }}</span> posts
-        </div>
-        <div class="comments col-sm-4">
-          <span class="number">{{ comments.count }}</span> commentaires
+        <div class="col-sm-8 col-sm-offset-2">
+          <div class="row">
+            <div class="topics col-sm-4">
+              <span class="number">{{ topics.length }}</span> sujets
+            </div>
+            <div class="posts col-sm-4">
+              <span class="number">{{ posts.length }}</span> posts
+            </div>
+            <div class="comments col-sm-4">
+              <span class="number">{{ comments.length }}</span> commentaires
+            </div>
+          </div>
         </div>
       </div>
     </div>
