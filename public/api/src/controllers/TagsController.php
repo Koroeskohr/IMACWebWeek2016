@@ -8,7 +8,7 @@ class TagsController {
 
 	public function __construct($app) {
 		$this->app = $app;
-		$this->tag = new Tag($app->db); 
+		$this->tag = new Tag($app->db);
 	}
 
 	public function createTag($request, $response, $args){

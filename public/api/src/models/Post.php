@@ -61,18 +61,20 @@ class Post {
 	}
 
 	public function likePost($id) {
-		// try {
-			$sql = "SELECT likes FROM Post WHERE id = ".$id;
+		$sql = "SELECT likes FROM Post WHERE id = ".$id;
+		$query = $this->db->query($sql);
+		$result = $query->fetchAll();
+		if(count($result) == 1){
+			$sql = "UPDATE Post SET likes =".(intval($result[0]['likes'])+1)." WHERE id = ".$id;
 			$query = $this->db->query($sql);
-			$result = $query->fetchAll();
-			if(count($result) == 1){
-				$sql = "UPDATE Post SET likes =".(intval($result[0]['likes'])+1)." WHERE id = ".$id;
-				$query = $this->db->query($sql);
-			}
-			return 200;
-		// } catch (Exception $e) {
-		// 	return 400;
-		// }
+		}
+	}
+
+	public function showSearchPosts($search) {
+		$sql = "SELECT Post.* FROM Post INNER JOIN Tagge ON Post.id = Tagge.idPost INNER JOIN Tag ON Tagge.idTag = Tag.id INNER JOIN Sujet ON Post.sujet = Sujet.id WHERE Post.titre LIKE '%".$search."%' OR Post.texte LIKE '%".$search."%' OR Post.auteur LIKE '%".$search."%'";
+		$query = $this->db->query($sql);
+		$result = $query->fetchAll();
+		return $result;
 	}
 }
 

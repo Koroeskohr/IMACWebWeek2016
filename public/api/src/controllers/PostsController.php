@@ -52,6 +52,12 @@ class PostsController {
 		$response->status = $this->post->likePost($args['id']);
 		return $response->withJson(http_response_code());
 	}
+
+	public function showSearch($request, $response, $args){
+		$search=$_GET["id"];
+		$result = $this->post->showSearchPosts($search);
+		return $response->withJson($result);
+	}
 }
 
 ?>
