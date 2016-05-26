@@ -41,7 +41,6 @@
       tags: Array
     },
     ready () {
-      console.log(this.post)
       // this.$http.get('post/' + this.post.id + "/comments").then(
       //   (response) => {
       //     this.comments = response.data

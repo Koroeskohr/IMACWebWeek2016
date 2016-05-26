@@ -16,6 +16,12 @@
             {{ post.likes }} likes
           </span>
         </div>
+
+        <div class="tags">
+          <span class="tag" v-for='tag in tags'>
+            #{{tag.nom}}
+          </span>
+        </div>
       </div>
     </div>
   </article>
@@ -32,13 +38,23 @@
     },
     data () {
       return {
-        comments: []
+        comments: [],
+        tags: []
       }
     },
     created () {
       this.$http.get('post/' + this.post.id + "/comments").then(
           (response) => {
             this.comments = response.data
+          },
+          (response) => {
+            console.log("comment " + this.post.id + " fail " + response);
+          }
+        )
+
+      this.$http.get('post/' + this.post.id + "/tags").then(
+          (response) => {
+            this.tags = response.data
           },
           (response) => {
             console.log("comment " + this.post.id + " fail " + response);
