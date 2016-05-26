@@ -13,9 +13,10 @@ $app->get('/posts', '\PostsController:showAll');
 $app->get('/tag/{id}/posts','\PostsController:showPostFromTags');
 $app->post('/topic/{id}/posts', '\PostsController:createPostOnSubject');
 $app->delete('/post/{id}', '\PostsController:deletePost');
-
+ 
 // Route for comments.
-$app->get('/comments','\PostsController:showAll');
+$app->get('/comments','\CommentsController:showAll');
+$app->get('/comment/{id}','\CommentsController:showResponse');
 $app->get('/post/{ids}/comments', '\CommentsController:showCommentsFromPost');
 $app->post('/post/{id_post}/comment/{id_comment}', '\CommentsController:createReponse');
 $app->post('/post/{id}/comments','\CommentsController:create');

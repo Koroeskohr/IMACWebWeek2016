@@ -31,3 +31,15 @@ $container['db'] = function ($c) {
 $container['Post'] = function ($c) {
     return new \Post($c['db']);
 };
+
+$container['Comment'] = function ($c) {
+    return new \Comment($c['db']);
+};
+
+$container['Tag'] = function ($c) {
+    return new \Tag($c['db']);
+};
+
+$container['Topic'] = function ($c) {
+    return new \Topic($c['db']);
+};
