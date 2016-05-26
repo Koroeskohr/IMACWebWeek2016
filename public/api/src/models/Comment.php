@@ -8,8 +8,9 @@ class Comment {
 	}
 
 	public function getCommentsByPost($postId){
-		$sql = "SELECT * FROM Comments WHERE reponse IS NULL AND post = ".$postId;
-		$query = $this->db->query($sql);
+		$query = $this->db->prepare("SELECT * FROM Comments WHERE reponse IS NULL AND post = :postId;");
+		$query->bindParam(":postId",$postId);
+		$query->execute();
 		$result = $query->fetchAll();
 		return $result;
 	}
@@ -27,7 +28,7 @@ class Comment {
 	}
 
 	public function getAll(){
-		$sql = "SELECT * FROM Comments";
+		$query = "SELECT * FROM Comments";
 		$query = $this->db->query($sql);
 		$result = $query->fetchAll();
 		return $result;
@@ -35,8 +36,11 @@ class Comment {
 
 	public function create($id,$auteur,$texte){
 		try{
-		    $sql = "INSERT INTO Comments (`auteur`, `texte`, `post`) VALUES ('".$auteur."', '".$texte."', '".$id."');";
-		    $exec = $this->db->exec($sql);
+		    $query = $this->db->prepare("INSERT INTO Comments (`auteur`, `texte`, `post`) VALUES (:auteur, :texte, :id);");
+		    $query->bindParam(":id",$id);
+		    $query->bindParam(":auteur",$auteur);
+		    $query->bindParam(":texte",$texte);
+		    $query->execute();
 		    $status = 200;
 		} catch (Exception $e){
 		    $status = 400;
@@ -46,8 +50,12 @@ class Comment {
 
 	public function createResponse($idPost,$idComment,$auteur,$texte){
 		try{
-		    $sql = "INSERT INTO Comments (`auteur`, `texte`, `post`, `reponse`) VALUES ('".$auteur."', '".$texte."', '".$idPost."', '".$idComment."');";
-		    $exec = $this->db->exec($sql);
+		    $query = $this->db->prepare("INSERT INTO Comments (`auteur`, `texte`, `post`, `reponse`) VALUES (:auteur, :texte, :idPost, :idComment);");
+		    $query->bindParam(":idPost",$idPost);
+		    $query->bindParam(":auteur",$auteur);
+		    $query->bindParam(":idComment",$idComment);
+		    $query->bindParam(":texte",$texte);
+		    $query->execute();
 		    $status = 200;
 		} catch (Exception $e){
 		    $status = 400;

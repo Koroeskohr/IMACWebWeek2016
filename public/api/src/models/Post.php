@@ -6,22 +6,28 @@ class Post {
 	public function __construct($db) {
 		$this->db = $db;
 	}
-
+//ok
 	public function create($titre, $auteur, $image, $contenu, $idSubject) {
 		try {
-			$sql = "INSERT INTO Post (`titre`, `auteur`, `image`, `texte`, `sujet`) VALUES ('".$titre."', '".$auteur."', '".$image."', '".$contenu."', '".$idSubject."')";
-		    $query = $this->db->query($sql);
+			$query = $this->db->prepare("INSERT INTO Post (`titre`, `auteur`, `image`, `texte`, `sujet`) VALUES (:titre, :auteur, :image, :contenu, :idSubject)");
+		    $query->bindParam(":titre",$titre);
+		    $query->bindParam(":auteur",$auteur);
+		    $query->bindParam(":image",$image);
+		    $query->bindParam(":contenu",$contenu);
+		    $query->bindParam(":idSubject",$idSubject);
+		    $query->execute();
 		    $status = 200;
 		} catch (Exception $e){
 		    $status = 400;
 		}
 		return $status;
 	}
-
+//ok
 	public function getById($id) {
-		$sql = "SELECT * FROM Post WHERE id = ".$id.";";
-		$result = $this->db->query($sql);
-		$result = $result->fetchAll();
+		$query = $this->db->prepare("SELECT * FROM Post WHERE id = :id;");
+		$query->bindParam(":id",$id);
+		$query->execute();
+		$result = $query->fetchAll();
 		return $result;
 	}
 
@@ -31,48 +37,55 @@ class Post {
 		$result = $query->fetchAll();
 		return $result;
 	}
-
+//ok
 	public function getBySubject($subjectId) {
-		$sql = "SELECT * FROM Post WHERE sujet =".$subjectId.";";
-		$query = $this->db->query($sql);
+		$query = $this->db->prepare("SELECT * FROM Post WHERE sujet = :subjectId;");
+		$query->bindParam(":subjectId",$subjectId);
+		$query->execute();
 		$result = $query->fetchAll();
 		return $result;
 	}
-
+//ok
 	public function getByTag($tagId) {
-		$sql = "SELECT * FROM Post INNER JOIN Tagge ON Tagge.idTag = ".$tagId." WHERE Tagge.idPost = Post.id;";
-		$query = $this->db->query($sql);
+		$query = $this->db->prepare("SELECT * FROM Post INNER JOIN Tagge ON Tagge.idTag = :tagId WHERE Tagge.idPost = Post.id;");
+		$query->bindParam(":tagId",$tagId);
+		$query->execute();
 		$result = $query->fetchAll();
 		return $result;
 	}
-
+//ok
 	public function delete($id) {
-		$sql = "SELECT * FROM Post WHERE id = ".$id.";";
-		$query = $this->db->query($sql);
+		$query = $this->db->prepare("SELECT * FROM Post WHERE id = :id;");
+		$query->bindParam(":id",$id);
+		$query->execute();
 		$result = $query->fetchAll();
 		if (count($result) == 1) {
-			$sql = "DELETE FROM Post WHERE id = ".$id;
-			$query = $this->db->query($sql);
+			$query = $this->db->prepare("DELETE FROM Post WHERE id = :id");
+			$query->bindParam(":id",$id);
+			$query->execute();
 			$status = 200;
 		} else {
 			$status = 400;
 		}
 		return $status;
 	}
-
+//ok
 	public function likePost($id) {
-		$sql = "SELECT likes FROM Post WHERE id = ".$id;
-		$query = $this->db->query($sql);
+		$query = $this->db->prepare("SELECT likes FROM Post WHERE id = :id");
+		$query->bindParam(":id",$id);
+		$query->execute();
 		$result = $query->fetchAll();
 		if(count($result) == 1){
-			$sql = "UPDATE Post SET likes =".(intval($result[0]['likes'])+1)." WHERE id = ".$id;
-			$query = $this->db->query($sql);
+			$query = $this->db->prepare("UPDATE Post SET likes =".(intval($result[0]['likes'])+1)." WHERE id = :id");
+			$query->bindParam(":id",$id);
+			$query->execute();
 		}
 	}
-
+// marche pas ?
 	public function showSearchPosts($search) {
-		$sql = "SELECT Post.* FROM Post INNER JOIN Tagge ON Post.id = Tagge.idPost INNER JOIN Tag ON Tagge.idTag = Tag.id INNER JOIN Sujet ON Post.sujet = Sujet.id WHERE Post.titre LIKE '%".$search."%' OR Post.texte LIKE '%".$search."%' OR Post.auteur LIKE '%".$search."%'";
-		$query = $this->db->query($sql);
+		$query = $this->db->prepare("SELECT Post.* FROM Post INNER JOIN Tagge ON Post.id = Tagge.idPost INNER JOIN Tag ON Tagge.idTag = Tag.id INNER JOIN Sujet ON Post.sujet = Sujet.id WHERE Post.titre LIKE '%:search%' OR Post.texte LIKE '%:search%' OR Post.auteur LIKE '%:search%' OR Sujet.titre LIKE '%:search%'");
+		$query->bindParam(":search",$search);
+		$query->execute();
 		$result = $query->fetchAll();
 		return $result;
 	}
