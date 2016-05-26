@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__.'/../models/Post.php';
+/*require __DIR__.'/../models/Tag.php';
 
 class PostsController {
 	private $app;
@@ -58,6 +58,6 @@ class PostsController {
 		  $result = $query->fetchAll();
 		  return $response->withJson($result);
 	}
-}
+}*/
 
 ?>

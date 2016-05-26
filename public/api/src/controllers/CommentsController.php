@@ -44,8 +44,6 @@ class CommentsController {
 		return $response->withJson(http_response_code());
 	}
 
-
-
 }
 
 ?>

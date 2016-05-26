@@ -9,11 +9,11 @@ class Post {
 
 	public function create($titre, $auteur, $image, $contenu, $idSubject) {
 		try {
-			if (empty($image))
-				$sql = "INSERT INTO Post (`titre`, `auteur`, `image`, `texte`, `sujet`) VALUES ('".$titre."', '".$auteur."', NULL, '".$contenu."', '".$idSubject."')";
-			else
+			//if (empty($image))
+			//	$sql = "INSERT INTO Post (`titre`, `auteur`, `image`, `texte`, `sujet`) VALUES ('".$titre."', '".$auteur."', NULL, '".$contenu."', '".$idSubject."')";
+			//else
 				$sql = "INSERT INTO Post (`titre`, `auteur`, `image`, `texte`, `sujet`) VALUES ('".$titre."', '".$auteur."', '".$image."', '".$contenu."', '".$idSubject."')";
-		    echo $sql;
+		    //echo $sql;
 		    $query = $this->db->query($sql);
 		    $status = 200;
 		} catch (Exception $e){
