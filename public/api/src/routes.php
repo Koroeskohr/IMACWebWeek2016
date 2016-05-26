@@ -29,7 +29,7 @@ $app->delete('/topic/{id}','\TopicsController:delete');
 
 // Route for tags.
 $app->get('/post/{id}/tags','\TagsController:show');
-$app->post('/post/{id}/tags','\TagsController:create');
+$app->post('/post/{id}/tags','\TagsController:createTag');
 
 
 // Route for likes.
