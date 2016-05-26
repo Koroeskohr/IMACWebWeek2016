@@ -1,12 +1,10 @@
 <?php
 
-require 'Database.php';
-
 class Post {
 	private $db;
 
 	public function __construct($db) {
-		$this->db = $db;
+		$this->db = $db; 
 	}
 
 	public function getById($id) {

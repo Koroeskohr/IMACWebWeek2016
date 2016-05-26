@@ -8,7 +8,7 @@ class PostsController {
 
 	public function __construct($app) {
 		$this->app = $app;
-		$this->post = new Post($app->db);
+		$this->post = new Post($app->db); 
 	}
 
 	public function createPostOnSubject($request, $response, $args){
