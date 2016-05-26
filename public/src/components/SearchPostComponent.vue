@@ -1,0 +1,24 @@
+<template>
+  <div class="search-post" v-link="'/post/' + post.id">
+    <div class="title_post">
+      <h3 class="titre">{{ post.titre }}</h3>
+    </div>
+    <div class="text">
+      {{ post.texte | truncate 100 }}
+    </div>
+  </div>
+</template>
+
+
+
+<script>
+
+  export default {
+    name: "SearchPostComponent",
+    props: {
+      post: Object
+    }
+  }
+
+
+</script>

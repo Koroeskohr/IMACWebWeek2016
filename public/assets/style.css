@@ -192,4 +192,33 @@ table {
       background-color: #e74c3c;
       color: #fff; }
 
+.modal-bg {
+  left: 0;
+  z-index: 9000;
+  position: fixed;
+  background: rgba(128, 128, 128, 0.7);
+  width: 100%;
+  height: 100%; }
+
+.search {
+  position: fixed;
+  z-index: 9001;
+  background-color: #FFF;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  height: 90%; }
+  .search h1 {
+    font-size: 4.0rem;
+    font-weight: 800; }
+  .search h3 {
+    margin-bottom: 1rem; }
+  .search .results h3 {
+    font-size: 1.4rem;
+    font-weight: 800; }
+
+.search-post {
+  margin-bottom: 2rem; }
+
 /*# sourceMappingURL=style.css.map */

@@ -1,23 +1,28 @@
 <template>
   <div id="wrapper">
+    <search-component v-show='searchToggled'></search-component>
     <header-component v-show="!isHome"></header-component>
-    <router-view
-      @route-data-loaded="updatePathName">
+    <router-view>
     </router-view>
   </div>
 </template>
 
 <script>
 import HeaderComponent from './components/HeaderComponent.vue'
+import SearchComponent from './components/SearchComponent.vue'
 export default {
-  components: { HeaderComponent },
+  components: { HeaderComponent, SearchComponent },
   computed: {
     isHome () {
-      return this.pathName === "/topics"
+      return this.$route.path === "/topics"
+    },
+    searchToggled() {
+      console.log("app searchToggled")
+      return this.searchIsOn;
     }
   },
   created () {
-    this.pathName = window.location.pathname;
+    this.$on('searchToggled', this.toggleSearch)
   },
   data () {
     return {
@@ -25,13 +30,14 @@ export default {
       // with hot-reload because the reloaded component
       // preserves its current state and we are modifying
       // its initial state.
-      "pathName": ''
+      searchIsOn: false
     }
   },
   methods: {
-    updatePathName: (vm) => {
-      console.log("upd path")
-      this.pathName = window.location.pathname;
+    toggleSearch: function () {
+      console.log("app toggleSearch")
+
+      this.searchIsOn = !this.searchIsOn;
     }
   }
 }
