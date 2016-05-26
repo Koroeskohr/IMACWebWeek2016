@@ -4,7 +4,7 @@ class Post {
 	private $db;
 
 	public function __construct($db) {
-		$this->db = $db;
+		$this->db = $db; 
 	}
 
 	public function create($titre, $auteur, $image, $contenu, $idSubject) {

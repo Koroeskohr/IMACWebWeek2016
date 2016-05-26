@@ -1,61 +1,47 @@
 <?php
 
+require __DIR__.'/../models/Comment.php';
+
 class CommentsController {
 	private $app;
+	private $comment;
 
 	public function __construct($app) {
 		$this->app = $app;
-	}
+		$this->comment = new Comment($app->db);
+	} 
 
 	public function showCommentsFromPost($request, $response, $args){
-		$id_array = explode(",", $args["ids"]);
-		$sql = "SELECT * FROM Comments WHERE ";
-		for ($i = 0; $i < count($id_array)-1; $i++) {
-			$sql .= "post = ".$id_array[$i]." OR ";
-		}
-		$sql .= "post = ".$id_array[$i].";";
-		$query = $this->app->db->query($sql);
-		$result = $query->fetchAll();
+		$result = $this->comment->getCommentsByPost($args['ids']);
+		return $response->withJson($result);
+	}
+
+	public function showResponse($request, $response, $args){
+		$result = $this->comment->getResponse($args['id']);
 		return $response->withJson($result);
 	}
 
 	public function showAll($request, $response, $args){
-		$sql = "SELECT * FROM Comments";
-		$query = $this->app->db->query($sql);
-		$result = $query->fetchAll();
+		$result = $this->comment->getAll();
 		return $response->withJson($result);
 	}
 
 	public function create($request, $response, $args){
-		try{
-   			$body   = $request->getParsedBody();
-		    $auteur = filter_var($body['auteur'], FILTER_SANITIZE_STRING);
-		    $texte  = filter_var($body['contenu'], FILTER_SANITIZE_STRING);
+		$body   = $request->getParsedBody();
+	    $auteur = filter_var($body['auteur'], FILTER_SANITIZE_STRING);
+	    $texte  = filter_var($body['contenu'], FILTER_SANITIZE_STRING);
 
-		    $sql = "INSERT INTO Comments (`auteur`, `texte`, `post`) VALUES ('".$auteur."', '".$texte."', '".$args['id']."');";
-		    $query = $this->app->db->query($sql);
-
-		    $response->status = 200;
-		} catch (Exception $e){
-		    $response->status = 400;
-		}
+		$response->status = $this->comment->create($args['id'],$auteur,$texte);
 		return $response->withJson(http_response_code());
 	}
 
 	public function createReponse($request, $response, $args){
-		try{
-	  	 	$body   = $request->getParsedBody();
-		    $auteur = filter_var($body['auteur'], FILTER_SANITIZE_STRING);
-		    $texte  = filter_var($body['contenu'], FILTER_SANITIZE_STRING);
+  	 	$body   = $request->getParsedBody();
+	    $auteur = filter_var($body['auteur'], FILTER_SANITIZE_STRING);
+	    $texte  = filter_var($body['contenu'], FILTER_SANITIZE_STRING);
 
-		    $sql = "INSERT INTO Comments (`auteur`, `texte`, `post`, `reponse`) VALUES ('".$auteur."', '".$texte."', '".$args['id_post']."', '".$args['id_comment']."');";
-		    $query = $this->app->db->query($sql);
-
-		    $response->status = 200;
-		} catch (Exception $e){
-		    $response->status = 400;
-		}
-	  return $response->withJson(http_response_code());
+		$response->status = $this->comment->createResponse($args['id_post'],$args['id_comment'],$auteur,$texte);
+		return $response->withJson(http_response_code());
 	}
 
 
