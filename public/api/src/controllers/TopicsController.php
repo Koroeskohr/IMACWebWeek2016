@@ -13,26 +13,18 @@ class TopicsController {
 
 	public function create($request, $response, $args)
 	{
-		try{
-		    $body  = $request->getParsedBody();
-		    $titre = filter_var($body['titre'], FILTER_SANITIZE_STRING);
-		    $response->status = $this->topic->create($titre);
-		} catch (Exception $e){
-		    $response->status = 400;
-		}
+		$body  = $request->getParsedBody();
+		$titre = filter_var($body['titre'], FILTER_SANITIZE_STRING);
+		$response->status = $this->topic->create($titre);
 		return $response->withJson(http_response_code());
 	}
 
 	public function update($request, $response, $args)
 	{
-		try {
-			$body = $request->getParsedBody();
-			$id = $args["id"];
-			$titre = $body["titre"];
-			$response->status = $this->topic->update($id,$titre);
-		} catch(Exception $e) {
-			$response->status = 400;
-		}
+		$body = $request->getParsedBody();
+		$id = $args["id"];
+		$titre = $body["titre"];
+		$response->status = $this->topic->update($id,$titre);
 		return $response->withJson(http_response_code());
 	}
 
