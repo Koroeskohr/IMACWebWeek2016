@@ -7,8 +7,10 @@ require 'controllers/TagsController.php';
 
 
 // Route for post.
+$app->get('/post/search', '\PostsController:showSearch');
 $app->get('/topic/{id}/posts', '\PostsController:showPostFromSubject');
 $app->get('/post/{id}', '\PostsController:showOnePost');
+
 $app->get('/posts', '\PostsController:showAll');
 $app->get('/tag/{id}/posts','\PostsController:showPostFromTags');
 $app->post('/post/{id}','\PostsController:showLikePost');

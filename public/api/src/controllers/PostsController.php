@@ -42,7 +42,16 @@ class PostsController {
 		  $result = $query->fetchAll();
 		  return $response->withJson($result);
 	}
+	
+	public function showSearch($request, $response, $args){
+		$search=$_GET["id"];
+		$sql = "SELECT * FROM Post WHERE titre LIKE '%".$search."%' OR texte LIKE '%".$search."%' OR auteur LIKE '%".$search."%'";
+		$query = $this->app->db->query($sql);
+		$result = $query->fetchAll();
+		return $response->withJson($result);
+	}
 
+	
 	public function showPostFromSubject($request, $response, $args){
 		$sql = "SELECT * FROM Post WHERE sujet =".$args["id"].";";
 		$query = $this->app->db->query($sql);
