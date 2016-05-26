@@ -4,7 +4,7 @@ class Post {
 	private $db;
 
 	public function __construct($db) {
-		$this->db = $db; 
+		$this->db = $db;
 	}
 
 	public function create($titre, $auteur, $image, $contenu, $idSubject) {
@@ -58,6 +58,21 @@ class Post {
 			$status = 400;
 		}
 		return $status;
+	}
+
+	public function likePost($id) {
+		// try {
+			$sql = "SELECT likes FROM Post WHERE id = ".$id;
+			$query = $this->db->query($sql);
+			$result = $query->fetchAll();
+			if(count($result) == 1){
+				$sql = "UPDATE Post SET likes =".(intval($result[0]['likes'])+1)." WHERE id = ".$id;
+				$query = $this->db->query($sql);
+			}
+			return 200;
+		// } catch (Exception $e) {
+		// 	return 400;
+		// }
 	}
 }
 
