@@ -1,7 +1,5 @@
 <?php
 
-require 'Database.php';
-
 class Post {
 	private $db;
 
