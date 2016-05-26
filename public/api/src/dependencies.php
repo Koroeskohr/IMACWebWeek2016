@@ -27,3 +27,19 @@ $container['db'] = function ($c) {
     $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
     return $pdo;
 };
+
+$container['Post'] = function ($c) {
+    return new \Post($c['db']);
+};
+
+$container['Comment'] = function ($c) {
+    return new \Comment($c['db']);
+};
+
+$container['Tag'] = function ($c) {
+    return new \Tag($c['db']);
+};
+
+$container['Topic'] = function ($c) {
+    return new \Topic($c['db']);
+};

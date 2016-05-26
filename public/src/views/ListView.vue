@@ -1,22 +1,23 @@
 <template>
   <div class="post-list">
     <div class="header_rubrique">
-      <h3 class="title_rubrique">Liste des posts</h3>
+      <h1>{{ topic.titre }}</h1>
+      <h3 class="title_rubrique">{{topic.countPost}} posts</h3>
     </div>
-    <post-component
+    <list-post-component
       v-for='post in posts'
       :post='post'>
-    </post-component>
+    </list-post-component>
   </div>
 </template>
 
 <script>
-  import PostComponent from '../components/PostComponent.vue'
+  import ListPostComponent from '../components/ListPostComponent.vue'
   import CommentComponent from '../components/CommentComponent.vue'
 
   export default {
     name: "ListView",
-    components: { PostComponent, CommentComponent },
+    components: { ListPostComponent, CommentComponent },
     data () {
       return {
         topic: {},
