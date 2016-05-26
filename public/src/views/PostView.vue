@@ -1,7 +1,6 @@
 <template>
   <div class="post-view">
-    <!-- todo: full post ocmponent -->
-    <full-post-component :post='post'></full-post-component>
+    <full-post-component :post='post' :comments="comments" :tags="tags"></full-post-component>
   </div>
 
 
@@ -13,7 +12,8 @@
     data () {
       return {
         post: {},
-        comments: {}
+        tags: [],
+        comments: []
       }
     },
     components: { FullPostComponent },
@@ -28,6 +28,14 @@
           }
         )
 
+        this.$http.get('post/' + to.params.id + '/tags').then(
+          (response) => {
+            this.tags = response.data
+          },
+          (response) => {
+            console.log("tags " + to.params.id + " fail " + response);
+          }
+        )
 
         this.$http.get('post/' + to.params.id + "/comments").then(
           (response) => {

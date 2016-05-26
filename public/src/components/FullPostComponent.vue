@@ -8,6 +8,7 @@
     <div class="row">
       <div class="col-sm-6 img">
         <img :src="post.image">
+        <span v-for="tag in tags">#{{ tag.nom }}</span>
       </div>
       <div class="col-sm-6 info">
         <div class="text">
@@ -20,23 +21,35 @@
         </div>
       </div>
     </div>
+
+    <comment-component v-for="comment in comments" :comment="comment"></comment-component>
   </article>
 </div>
 </template>
 
 <script>
-
+  import CommentComponent from './CommentComponent.vue'
   export default {
     name: "FullPostComponent",
+    components: { CommentComponent },
     props: {
-      post: Object
+      post: {
+        type: Object,
+        required: true,
+      },
+      comments: Array,
+      tags: Array
     },
-    data () {
-      return {
-        comments: []
-      }
-    },
-    created () {
+    ready () {
+      console.log(this.post)
+      // this.$http.get('post/' + this.post.id + "/comments").then(
+      //   (response) => {
+      //     this.comments = response.data
+      //   },
+      //   (response) => {
+      //     console.log("comment " + this.post.id + " fail " + response);
+      //   }
+      // )
     }
   }
 </script>

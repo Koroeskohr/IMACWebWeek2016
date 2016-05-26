@@ -9,7 +9,7 @@
     </div>
 
     <div class="sub-comments">
-      
+      <!-- <comment-component v-for='childComment in childComments' v-if="childComments == []"> -->
     </div>
 
   </div>
@@ -26,10 +26,10 @@
         childComments: []
       }
     },
-    created () {
+    ready () {
+      console.log(this.comment)
       if (this.comment.childComments) {
         let ids = _.map(this.comment.childComments, _.property('id'))
-
       }
     }
   }
