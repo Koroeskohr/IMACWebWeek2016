@@ -89,7 +89,8 @@ INSERT INTO `Tag` (`id`, `nom`) VALUES
 (15,	'Design'),
 (16,	'History'),
 (17,	'Sport'),
-(18,	'Hedgehog');
+(18,	'Hedgehog'),
+(19,	'jhjkhkhhk');
 
 DROP TABLE IF EXISTS `Tagge`;
 CREATE TABLE `Tagge` (
@@ -105,12 +106,14 @@ CREATE TABLE `Tagge` (
 INSERT INTO `Tagge` (`idPost`, `idTag`) VALUES
 (1,	1),
 (2,	4),
+(2,	19),
 (4,	5),
 (5,	7),
 (5,	10);
 
 DROP TABLE IF EXISTS `User`;
 CREATE TABLE `User` (
+  `admin` bit(1) NOT NULL DEFAULT b'0',
   `password` varchar(255) NOT NULL,
   `mail` varchar(255) NOT NULL,
   `username` varchar(255) NOT NULL,
@@ -120,7 +123,8 @@ CREATE TABLE `User` (
   UNIQUE KEY `username` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `User` (`password`, `mail`, `username`, `id`) VALUES
-('PDJFIOHVHV',	'MAIHDJVHD',	'PROUT',	1);
+INSERT INTO `User` (`admin`, `password`, `mail`, `username`, `id`) VALUES
+(CONV('0', 2, 10) + 0,	'PDJFIOHVHV',	'MAIHDJVHD',	'PROUT',	1);
 
--- 2016-05-26 11:01:35
+
+-- 2016-05-26 12:25:48
