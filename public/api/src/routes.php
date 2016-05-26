@@ -11,6 +11,7 @@ $app->get('/topic/{id}/posts', '\PostsController:showPostFromSubject');
 $app->get('/post/{id}', '\PostsController:showOnePost');
 $app->get('/posts', '\PostsController:showAll');
 $app->get('/tag/{id}/posts','\PostsController:showPostFromTags');
+$app->post('/post/{id}','\PostsController:showLikePost');
 $app->post('/topic/{id}/posts', '\PostsController:createPostOnSubject');
 $app->delete('/post/{id}', '\PostsController:deletePost');
 

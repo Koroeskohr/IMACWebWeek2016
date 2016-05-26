@@ -56,6 +56,20 @@ class PostsController {
 		  $result = $query->fetchAll();
 		  return $response->withJson($result);
 	}
+	
+	public function showLikePost($request, $response, $args){
+		  $sql = "SELECT likes FROM Post WHERE id = ".$args["id"];
+		  $query = $this->app->db->query($sql);
+		  $result = $query->fetchAll();
+		  if(count($result) == 1){
+			  $sql = "UPDATE Post SET likes =".(intval($result[0]['likes'])+1)." WHERE id = ".$args["id"];
+			  $query = $this->app->db->query($sql);
+			  $response->status = 200;
+		  } else {
+			  $response->status = 400;
+		  }
+		  return  $response->withJson(http_response_code());
+	}
 
 	public function deletePost($request, $response, $args){
 		$sql = "SELECT * FROM Post WHERE id = ".$args["id"].";";
