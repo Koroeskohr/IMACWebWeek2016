@@ -45,7 +45,7 @@ class PostsController {
 	
 	public function showSearch($request, $response, $args){
 		$search=$_GET["id"];
-		$sql = "SELECT * FROM Post WHERE titre LIKE '%".$search."%' OR texte LIKE '%".$search."%' OR auteur LIKE '%".$search."%'";
+		$sql = "SELECT Post.* FROM Post INNER JOIN Tagge ON Post.id = Tagge.idPost INNER JOIN Tag ON Tagge.idTag = Tag.id INNER JOIN Sujet ON Post.sujet = Sujet.id WHERE Post.titre LIKE '%".$search."%' OR Post.texte LIKE '%".$search."%' OR Post.auteur LIKE '%".$search."%'";
 		$query = $this->app->db->query($sql);
 		$result = $query->fetchAll();
 		return $response->withJson($result);
