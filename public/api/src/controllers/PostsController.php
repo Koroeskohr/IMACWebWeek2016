@@ -4,9 +4,11 @@ require __DIR__.'/../models/Post.php';
 
 class PostsController {
 	private $app;
+	private $post;
 
 	public function __construct($app) {
 		$this->app = $app;
+		$this->post = new Post($app->db);
 	}
 
 	public function createPostOnSubject($request, $response, $args){
@@ -33,14 +35,12 @@ class PostsController {
 	}
 
 	public function showAll($request, $response, $args){
-		$sql = "SELECT * FROM Post";
-		$query = $this->app->db->query($sql);
-		$result = $query->fetchAll();
+		$result = $this->post->getAll();
 		return $response->withJson($result);
 	}
 
 	public function showOnePost($request, $response, $args){
-		  $result = Post::getById($args['id']);
+		  $result = $this->post->getById($args['id']);
 		  return $response->withJson($result);
 	}
 
