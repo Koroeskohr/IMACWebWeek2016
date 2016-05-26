@@ -9,36 +9,41 @@ class Topic {
 
     public function create($titre) {
         try{
-            $sql = "SELECT * FROM Sujet WHERE titre = '".$titre."';";
-            $query = $this->db->query($sql);
+            $query = $this->db->prepare("SELECT * FROM Sujet WHERE titre = :titre");
+            $query->bindValue(":titre",$titre);
+            $query->execute();
             $result = $query->fetchAll();
             if (count($result) == 0) {
-               $sql = "INSERT INTO Sujet (`titre`) VALUES ('".$titre."');";
-               $query = $this->db->query($sql);
-               return 200;
+                $query = $this->db->prepare("INSERT INTO Sujet (`titre`) VALUES (:titre)");
+                $query->bindValue(":titre",$titre);
+                $query->execute();
+                return 200;
             } else {
                 return 202;
             }
         } catch (Exception $e){
-            $response->status = 400;
+            return 400;
         }
     }
 
     public function getAll() {
-        $sql = "SELECT * FROM Sujet";
-        $query = $this->db->query($sql);
+        $query = $this->db->prepare("SELECT * FROM Sujet");
+        $query->execute();
         $result = $query->fetchAll();
         return $result;
     }
 
     public function update($id,$titre) {
         try {
-            $sql = "SELECT * FROM Sujet WHERE id = '".$id."';";
-            $query = $this->db->query($sql);
+            $query = $this->db->prepare("SELECT * FROM Sujet WHERE id = :id");
+            $query->bindValue(":id",$id);
+            $query->execute();
             $result = $query->fetchAll();
             if (count($result) == 1) {
-                $sql = "UPDATE Sujet SET titre ='".$titre."' WHERE id=".$id.";";
-                $query = $this->db->query($sql);
+                $query = $this->db->prepare("UPDATE Sujet SET titre = :titre WHERE id=:id");
+                $query->bindValue(":titre", $titre);
+                $query->bindValue(":id", $id);
+                $query->execute();
             }
             return 200;
         } catch(Exception $e) {
@@ -48,13 +53,15 @@ class Topic {
 
     public function delete($id) {
         try{
-          $sql = "SELECT * FROM Sujet WHERE id = ".$id;
-          $query = $this->db->query($sql);
-          $result = $query->fetchAll();
-          if (count($result) == 1) {
-            $sql = "DELETE FROM Sujet WHERE id = ".$id;
-            $query = $this->db->query($sql);
-          }
+            $query = $this->db->prepare("SELECT * FROM Sujet WHERE id = :id");
+            $query->bindValue(":id",$id);
+            $query->execute();
+            $result = $query->fetchAll();
+            if (count($result) == 1) {
+                $query = $this->db->prepare("DELETE FROM Sujet WHERE id = :id");
+                $query->bindValue(":id",$id);
+                $query->execute();
+            }
           return 200;
         } catch(Exception $e) {
           return 400;
