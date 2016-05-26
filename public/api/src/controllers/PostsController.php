@@ -1,5 +1,7 @@
 <?php
 
+require __DIR__.'/../models/Post.php';
+
 class PostsController {
 	private $app;
 
@@ -37,9 +39,7 @@ class PostsController {
 	}
 
 	public function showOnePost($request, $response, $args){
-		  $sql = "SELECT * FROM Post WHERE id = ".$args["id"].";";
-		  $query = $this->app->db->query($sql);
-		  $result = $query->fetchAll();
+		  $result = Post::getById($args['id']);
 		  return $response->withJson($result);
 	}
 
