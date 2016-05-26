@@ -8,12 +8,7 @@ class CommentsController {
 	}
 
 	public function showCommentsFromPost($request, $response, $args){
-		$id_array = explode(",", $args["ids"]);
-		$sql = "SELECT * FROM Comments WHERE ";
-		for ($i = 0; $i < count($id_array)-1; $i++) {
-			$sql .= "post = ".$id_array[$i]." OR ";
-		}
-		$sql .= "post = ".$id_array[$i].";";
+		$sql = "SELECT * FROM Comments WHERE reponse IS NULL AND post = ".$args['ids'];
 		$query = $this->app->db->query($sql);
 		$result = $query->fetchAll();
 		return $response->withJson($result);
