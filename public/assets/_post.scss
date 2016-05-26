@@ -6,6 +6,11 @@
   margin-bottom: 2rem;
 }
 
+.post-list h1, .post-view h1 {
+  font-weight: 800;
+  font-size: 4.0rem;
+}
+
 .header_rubrique{
   margin: 30px 10px;
   text-align: center;
@@ -76,7 +81,8 @@
 
 .post .text{
   line-height: 25px;
-  letter-spacing: 1px;
+  font-size: 0.9rem;
+  letter-spacing: 0.11rem;
 }
 
 .post .date, .post .text{
@@ -101,6 +107,24 @@
   letter-spacing: 2px;
   color: $red;
   display: inline-block;
+}
+
+.post-view {
+  .post {
+    background: transparent;
+
+    .text {
+      box-sizing: border-box;
+      padding-top: 2.6rem;
+      margin: 0;
+    }
+
+    .img {
+      padding: 0;
+      padding-top: 2.6rem;
+    }
+  }
+
 }
 
 @media (max-width: 992px) {
