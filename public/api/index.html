@@ -12,19 +12,19 @@
     </form>
 
     <p>Fomulaire pour modifier un topic.
-    <form action="./public/topic/2" method="post" >
+    <form action="./public/topic/10" method="post" >
         <input type="hidden" name="_METHOD" value="PUT">
         <input type="text" value="Titre" name="titre">
         <input type="submit">
     </form>
-    <p>Fomulaire pour supprimer un topic (le 3).
-    <form action="./public/topic/3" method="post" >
+    <p>Fomulaire pour supprimer un topic (le 4).
+    <form action="./public/topic/4" method="post" >
         <input type="hidden" name="_METHOD" value="DELETE">
-        <input type="submit" value="Delete Topic 3">
+        <input type="submit" value="Delete Topic 4">
     </form>
 
     <p>Fomulaire pour supprimer un post (le 3).
-    <form action="./public/post/13" method="post" >
+    <form action="./public/post/3" method="post" >
         <input type="hidden" name="_METHOD" value="DELETE">
         <input type="submit" value="Delete Post 13">
     </form>
@@ -39,20 +39,20 @@
     </form>
 
    <p>Fomulaire pour créer un tag.</p>
-    <form action="./public/post/23/tags" method="post" >
+    <form action="./public/post/2/tags" method="post" >
         <input type="text" value="Ok" name="nomTag">
         <input type="submit">
     </form>
 
     <p>Fomulaire pour poster un commentaire.</p>
-    <form action="./public/post/15/comments" method="post" >
+    <form action="./public/post/1/comments" method="post" >
         <input type="text" value="Squeeze" name="auteur">
         <input type="text" value="Lol first" name="contenu">
         <input type="submit">
     </form>
 
     <p>Fomulaire pour poster un commentaire reponse.</p>
-    <form action="./public/post/15/comment/8" method="post" >
+    <form action="./public/post/1/comment/11" method="post" >
         <input type="text" value="Squeeze" name="auteur">
         <input type="text" value="Lol ok" name="contenu">
         <input type="submit">
@@ -60,6 +60,12 @@
 	<p>Fomulaire pour aimer.</p>
     <form action="./public/post/3" method="post" >
         <input type="submit" value="Aimer !">
+    </form>
+	
+	 <p>Recherche !</p>
+    <form action="./public/post/search" method="get" >
+        <input type="text" value="Texte" name="id">
+        <input type="submit">
     </form>
 </body>
 </html>
