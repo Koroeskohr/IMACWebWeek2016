@@ -4,6 +4,7 @@ require 'controllers/TopicsController.php';
 require 'controllers/PostsController.php';
 require 'controllers/CommentsController.php';
 require 'controllers/TagsController.php';
+require 'controllers/UsersController.php';
 
 
 // Route for post.
