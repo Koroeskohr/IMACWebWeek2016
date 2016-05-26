@@ -29,8 +29,8 @@ class PostsController {
 	}
 
 	public function showOnePost($request, $response, $args){
-		  $result = $this->post->getById($args['id']);
-		  return $response->withJson($result);
+		$result = $this->post->getById($args['id']);
+		return $response->withJson($result);
 	}
 
 	public function showPostFromSubject($request, $response, $args){
@@ -39,23 +39,12 @@ class PostsController {
 	}
 
 	public function showPostFromTags($request, $response, $args){
-		  $sql = "SELECT * FROM Post INNER JOIN Tagge ON Tagge.idTag = ".$args["id"]." WHERE Tagge.idPost = Post.id;";
-		  $query = $this->app->db->query($sql);
-		  $result = $query->fetchAll();
-		  return $response->withJson($result);
+		$result = $this->post->getByTag($args['id']); 
+		return $response->withJson($result);
 	}
 
 	public function deletePost($request, $response, $args){
-		$sql = "SELECT * FROM Post WHERE id = ".$args["id"].";";
-		$query = $this->app->db->query($sql);
-		$result = $query->fetchAll();
-		if (count($result) == 1) {
-			$sql = "DELETE FROM Post WHERE id = ".$args["id"];
-			$query = $this->app->db->query($sql);
-			$response->status = 200;
-		} else {
-			$response->status = 400;
-		}
+		$response->status = $this->post->delete($args['id']);
 		return $response->withJson(http_response_code());
 	}
 }
