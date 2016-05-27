@@ -7,7 +7,11 @@
         </a>
       </div>
       <div class="col-sm-3">
-        <a @click="toggleSearch">Recherche</a>
+        <a @click="toggleSearch" class="search-button">
+          <span class="search-link">
+            Recherche
+          </div>
+        </a>
       </div>
     </div>
 

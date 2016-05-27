@@ -52,6 +52,21 @@ table {
   font-weight: 800;
   font-size: 4.0rem; }
 
+.form-post {
+  box-sizing: border-box;
+  padding: 2rem;
+  border: 1px solid #323232; }
+  .form-post input, .form-post textarea {
+    font-family: "Open Sans", sans-serif;
+    width: 100%;
+    display: block;
+    margin-bottom: 2rem; }
+  .form-post textarea {
+    height: 5rem; }
+  .form-post input[type=submit] {
+    border: 1px solid #CCC;
+    padding: 0.5rem 0; }
+
 .header_rubrique {
   margin: 30px 10px;
   text-align: center; }
@@ -192,6 +207,22 @@ table {
       background-color: #e74c3c;
       color: #fff; }
 
+header .search-button {
+  height: 85px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: black; }
+  header .search-button:hover {
+    text-decoration: none; }
+header .search-link {
+  padding: 0.6rem;
+  border: 1px solid #e74c3c;
+  border-radius: 1rem; }
+  header .search-link:hover {
+    background-color: #e74c3c;
+    color: #fff; }
+
 .modal-bg {
   left: 0;
   z-index: 9000;
@@ -217,6 +248,9 @@ table {
   .search .results h3 {
     font-size: 1.4rem;
     font-weight: 800; }
+  .search input {
+    width: 60%;
+    height: 3.5rem; }
 
 .search-post {
   margin-bottom: 2rem; }

@@ -11,6 +11,28 @@
   font-size: 4.0rem;
 }
 
+.form-post {
+  box-sizing: border-box;
+  padding: 2rem;
+  border: 1px solid $grey;
+  input, textarea {
+    font-family: $title-font;
+    width: 100%;
+    display: block;
+    margin-bottom: 2rem;
+  }
+  textarea {
+    height: 5rem;
+  }
+
+  input[type=submit] {
+    border: 1px solid #CCC;
+    padding: 0.5rem 0;
+
+  }
+
+}
+
 .header_rubrique{
   margin: 30px 10px;
   text-align: center;

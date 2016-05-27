@@ -4,6 +4,7 @@
       <h1>{{ topic.titre }}</h1>
       <h3 class="title_rubrique">{{topic.countPost}} posts</h3>
     </div>
+    <post-form-component :topic="topic"></post-form-component>
     <list-post-component
       v-for='post in posts'
       :post='post'>
@@ -12,12 +13,13 @@
 </template>
 
 <script>
+  import PostFormComponent from '../components/PostFormComponent.vue'
   import ListPostComponent from '../components/ListPostComponent.vue'
   import CommentComponent from '../components/CommentComponent.vue'
 
   export default {
     name: "ListView",
-    components: { ListPostComponent, CommentComponent },
+    components: { ListPostComponent, CommentComponent, PostFormComponent },
     data () {
       return {
         topic: {},
