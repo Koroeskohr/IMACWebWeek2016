@@ -152,7 +152,25 @@ INSERT INTO `Tag` (`id`, `nom`) VALUES
 (16,	'History'),
 (17,	'Sport'),
 (18,	'Hedgehog'),
-(19,	'jhjkhkhhk');
+(20,	'Random'),
+(21,	'Keyboard'),
+(22,	'Roosevelt'),
+(23,	'Badass'),
+(24,	'President'),
+(25,	'Admin'),
+(26,	'Lincoln'),
+(27,	'Flamby'),
+(28,	'Raclette'),
+(29,	'Fromage'),
+(30,	'Burritos'),
+(31,	'Cookie'),
+(32,	'Cake'),
+(33,	'Photography'),
+(34,	'Artist'),
+(35,	'Fantastic'),
+(36,	'Festival'),
+(37,	'Toulouse'),
+(38,	'Virtual Reality');
 
 DROP TABLE IF EXISTS `Tagge`;
 CREATE TABLE `Tagge` (
@@ -168,9 +186,31 @@ CREATE TABLE `Tagge` (
 INSERT INTO `Tagge` (`idPost`, `idTag`) VALUES
 (1,	1),
 (2,	4),
-(2,	19),
+(3,	20),
+(3,	21),
 (4,	5),
 (5,	7),
-(5,	10);
+(5,	10),
+(7,	22),
+(7,	23),
+(7,	24),
+(8,	25),
+(9,	24),
+(9,	26),
+(11,	24),
+(11,	27),
+(12,	2),
+(12,	28),
+(12,	29),
+(13,	30),
+(14,	31),
+(14,	32),
+(15,	33),
+(15,	34),
+(15,	35),
+(16,	11),
+(16,	36),
+(16,	37),
+(17,	38);
 
--- 2016-05-27 09:51:29
+-- 2016-05-27 12:54:56
