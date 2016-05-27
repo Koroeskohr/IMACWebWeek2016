@@ -9,7 +9,7 @@
     </div>
     <post-form-component :topic="topic" v-show="addPostToggled" @keyup.esc="hideAddForm"></post-form-component>
     <list-post-component
-      v-for='post in posts'
+      v-for="post in posts | orderBy 'id'"
       :post='post'>
     </list-post-component>
   </div>
