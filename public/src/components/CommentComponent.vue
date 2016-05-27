@@ -7,7 +7,8 @@
     <div class="text">
       {{ comment.texte }}
     </div>
-    <input placeholder="Commenter..." type="text" v-model="response" @keyup.enter="sendComment"></input>
+    <button class="answer" v-show="!answerVisible" @click="toggleAnswer">Répondre</button>
+    <input class="comment-answer" placeholder="Commenter..." type="text" v-show="answerVisible" v-model="response" @keyup.enter="sendComment" @keyup.esc="hideAnswer"></input>
     <div class="sub-comments">
       <comment-component v-for='childComment in childComments' :comment='childComment' v-show="childComments != []">
     </div>
@@ -22,10 +23,14 @@
       comment: Object,
       post: Object
     },
+    methods: {
+
+    },
     data () {
       return {
         childComments: [],
-        response: ''
+        response: '',
+        answerVisible: false
       }
     },
     methods: {
@@ -46,6 +51,12 @@
             location.reload()
           }
         )
+      },
+      toggleAnswer: function() {
+        this.answerVisible = !this.answerVisible
+      },
+      hideAnswer: function() {
+        this.answerVisible = false
       }
     },
     ready () {

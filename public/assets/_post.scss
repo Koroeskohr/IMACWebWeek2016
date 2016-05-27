@@ -127,6 +127,11 @@
   padding: 2.6rem;
 }
 
+.post-view .post .img {
+  padding: 2.6rem 2.6rem 2.6rem 0;
+
+}
+
 .post img{
   width:100%;
   float: left;
@@ -307,6 +312,24 @@
       font-size: 1rem;
       padding-top: 0;
     }
+  }
+
+  .answer {
+    border: 0;
+    background: 0;
+    color: $red;
+    text-decoration: underline;
+    padding: 0;
+    margin-top: 0.5rem;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  .comment-answer {
+    margin-top: 0.5rem;
+    height: 3rem;
+    width: 40vw;
   }
 
 
