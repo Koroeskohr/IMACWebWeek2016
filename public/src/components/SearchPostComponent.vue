@@ -1,5 +1,5 @@
 <template>
-  <div class="search-post" v-link="'/post/' + post.id">
+  <div class="search-post" @click="hideAddForm" v-link="'/post/' + post.id">
     <div class="title_post">
       <h3 class="titre">{{ post.titre }}</h3>
     </div>
@@ -17,6 +17,11 @@
     name: "SearchPostComponent",
     props: {
       post: Object
+    },
+    methods: {
+      hideAddForm: function() {
+        this.$dispatch('searchToggle')
+      }
     }
   }
 
