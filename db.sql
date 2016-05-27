@@ -30,7 +30,19 @@ INSERT INTO `Comments` (`reponse`, `id`, `texte`, `date`, `auteur`, `post`) VALU
 (NULL,	3,	'D\'ailleurs ce qui l\'a sauve lors de son speech c\'etait le papier ou il avait note son discours ! \r\nIl a ralentit la balle. Il l\'a meme montre lors de ses paroles et jete en disant qu\'il fallait plus que ca pour le tuer. ',	'2016-05-26 15:46:40',	'Abraham',	7),
 (NULL,	4,	'WOW ca a l\'air tellement bon ! J\'ai faim.',	'2016-05-27 08:34:13',	'Hodoritos',	12),
 (4,	5,	'Oui tu as raison. Je trouve que ce commentaire apporte beaucoup a cette discussion. Merci beaucoup de partager tes passions.',	'2016-05-27 08:35:55',	'Miley Sir Usain Bold',	12),
-(NULL,	6,	'Ohlala miam miam. ',	'2016-05-27 08:39:30',	'Charlie Test Zteron',	12);
+(NULL,	6,	'Ohlala miam miam. ',	'2016-05-27 08:39:30',	'Charlie Test Zteron',	12),
+(NULL,	7,	'J\'adore les animaux, cet article est super interessant, j\'en parlerai a mes petits enfants !',	'2016-05-27 08:28:10',	'Mamie_gateau',	1),
+(NULL,	8,	'Ouiiiii les herissons c\'est trop trop trop mignon !!!! Je veux plus d\'articles sur ce sujet !',	'2016-05-27 08:31:23',	'LoverDu77',	4),
+(5,	9,	'Je suis d\'accord avec toi. Et ce site est trop bien, les gens qui l\'ont crees sont genials, il faudrait leur donner une medaille et des vacances au Bahamas',	'2016-05-27 08:33:11',	'Mouton',	4),
+(5,	10,	'Personnellement je prefererais voir des articles sur d\'autres animaux que les herissons. Les baleines c\'est mieux :)',	'2016-05-27 08:34:41',	'Grincheux_pas_si_grincheux',	4),
+(NULL,	11,	'Cet article correspond parfaitement a ma vision de la congolexicomatisation des lois du marche ! Et puis, y a un herisson dedans, donc c\'est encore mieux',	'2016-05-27 08:36:57',	'EddieMalou',	5),
+(8,	12,	'OUAH JE SUIS VOTRE PLUS GRAND FAN love love coeur coeur xxx antoine daniel forever yaoi',	'2016-05-27 08:38:00',	'JB_LOVER',	5),
+(9,	13,	'Oh la la, encore un kikoo, il y en a beaucoup trop sur ce site...',	'2016-05-27 08:38:35',	'Pfffff',	5),
+(NULL,	14,	'J\'ai rien compris a l\'article, quelqu\'un peut m\'expliquer svp ?',	'2016-05-27 08:41:22',	'BakaMan',	5),
+(11,	15,	'Non.',	'2016-05-27 08:41:46',	'Troll',	5),
+(NULL,	16,	'Je ne sais pas comment j\'ai atteri ici, mais je suis content !\r\nEt quand je suis content je vomis :)',	'2016-05-27 08:48:42',	'Simon Jeremi ',	5),
+(NULL,	17,	'Hey, my name is Bryan and I\'m reading this article in my kitchen, it\'s really fun !',	'2016-05-27 08:52:47',	'Bryan',	5),
+(14,	18,	'Bryan get out of the kitchen !',	'2016-05-27 08:54:14',	'Jenny',	5);
 
 DROP TABLE IF EXISTS `Post`;
 CREATE TABLE `Post` (
@@ -59,7 +71,10 @@ INSERT INTO `Post` (`auteur`, `titre`, `sujet`, `likes`, `date`, `image`, `texte
 ('F. Hollande',	'M-Moi ',	2,	12,	'2016-05-27 08:15:51',	'http://www.recette-gateau.eu/wp-content/uploads/2014/03/Flan-au-Lait.jpg',	'Be courageous,be you, be fu.. be proud of you.\r\nBecause we can be do, what we want to do.',	11),
 ('OpenGLouton',	'La raclette, une histoire de vie',	1,	0,	'2016-05-27 08:10:00',	'http://img0.ndsstatic.com/cuisine/raclette-classique_179190_w620.jpg',	'Un plat qui n\'a guere de saison. Un plat qui est synonyme de partage, de bonheur, de discussion. Il repond a tous les problemes du monde. La raclette, un plat intemporel, qui represente a lui-meme la democratie. ',	12),
 ('GitPullOver',	'Le burritos dans toute sa splendeur',	1,	10,	'2016-05-27 08:12:17',	'http://images.marmitoncdn.org/recipephotos/multiphoto/31/31a16e4f-d422-4f84-9671-663b7c1aabf7_normal.jpg',	'Le burritos montre la diversite. Les legumes se melangent a la viande pour former un combo de saveur. Les vrais savent.',	13),
-('Gordon Ramsey Bolton',	'Patrick, un petit cookie ?',	1,	4,	'2016-05-27 08:16:03',	'http://images.media-allrecipes.com/userphotos/720x405/1107530.jpg',	'Le cookie n\'est pas utilise seulement pour le web. Il est egalement tellement savoureux, qu\'on le savourerait. Une pepite !',	14);
+('Gordon Ramsey Bolton',	'Patrick, un petit cookie ?',	1,	4,	'2016-05-27 08:16:03',	'http://images.media-allrecipes.com/userphotos/720x405/1107530.jpg',	'Le cookie n\'est pas utilise seulement pour le web. Il est egalement tellement savoureux, qu\'on le savourerait. Une pepite !',	14),
+('LaPhotographe',	'Photographie - Julie de Waroquier',	3,	24,	'2016-05-27 08:06:08',	'https://format-com-cld-res.cloudinary.com/image/private/s--H-c9jI-y--/c_limit,g_center,h_65535,w_1600/a_auto,fl_keep_iptc.progressive,q_95/4498-13213464-Vain_waves_jpg1.jpg',	'Hey les artistes !\r\n\r\nSi vous ne le connaissez pas encore, empressez vous de decouvrir l\'univers fantastique de Julie de Waroquier !\r\n\r\nC\'est une artiste francaise qui a deja remp\r\nrte pleins de prix, dont certains a l\'international !\r\n\r\nCes travaux sont vraiment magnifiques. Elle realise des montages tres poetique et fantastiques. Son travail est tres inspirant !\r\n\r\nAllez jeter un coup d\'oeil a sa page ici : <a href=\"http://www.juliedewaroquier.com/\">Julie de Waroquier</a>',	15),
+('Juju',	'Rose Beton',	3,	7,	'2016-05-24 08:14:10',	'http://www.cultures.toulouse.fr/documents/10180/18200849/RoseBeton2016_ip.jpg?t=1461675862210',	'Salut tout le monde !\r\n\r\nEst-ce que vous avez ete au Festival Rose Beton ce printemps ? Vous en avez pense quoi ? J\'hesite encore a y aller...\r\n\r\nPour ceux qui ne connaissent pas, Rose Beton est un festival a Toulouse ! Ce festival met a l\'honneur le graffiti a travers plusieurs expositions !',	16),
+('Google',	'Virtual reality and art',	3,	0,	'2016-05-27 08:59:16',	'http://www.bangkokpost.com/media/content/20160506/1724921.jpg',	'Tilt Brush is a new techno by Google.\r\n\r\nTilt Brush lets you paint in 3D space with virtual reality.\r\nYour room is your canvas. Your palette is your imagination. The possibilities are endless.\r\n\r\n\"Tilt Brush is Like Microsoft Paint For The Year 2020\" - Fast Company\r\n\r\n\"A Drawing Tool with Style.\r\nMost drawing apps are dull, but Tilt Brush has a user interface that looks like something out of a blockbuster sci-fi flick.\" - Wired\r\n\r\nDiscover it at : <a href=\"http://www.tiltbrush.com/\">http://www.tiltbrush.com/</a>\r\n',	17);
 
 DROP TABLE IF EXISTS `Sujet`;
 CREATE TABLE `Sujet` (
@@ -123,4 +138,4 @@ INSERT INTO `Tagge` (`idPost`, `idTag`) VALUES
 (5,	7),
 (5,	10);
 
--- 2016-05-27 08:52:26
+-- 2016-05-27 09:02:29
