@@ -29,7 +29,7 @@ class CommentsController {
 	public function create($request, $response, $args){
 		$body   = $request->getParsedBody();
 	    $auteur = filter_var($body['auteur'], FILTER_SANITIZE_STRING);
-	    $texte  = filter_var($body['contenu'], FILTER_SANITIZE_STRING);
+	    $texte  = filter_var($body['texte'], FILTER_SANITIZE_STRING);
 
 		$response->status = $this->comment->create($args['id'],$auteur,$texte);
 		return $response->withJson(http_response_code());
@@ -38,7 +38,7 @@ class CommentsController {
 	public function createReponse($request, $response, $args){
   	 	$body   = $request->getParsedBody();
 	    $auteur = filter_var($body['auteur'], FILTER_SANITIZE_STRING);
-	    $texte  = filter_var($body['contenu'], FILTER_SANITIZE_STRING);
+	    $texte  = filter_var($body['texte'], FILTER_SANITIZE_STRING);
 
 		$response->status = $this->comment->createResponse($args['id_post'],$args['id_comment'],$auteur,$texte);
 		return $response->withJson(http_response_code());
