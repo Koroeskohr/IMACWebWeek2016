@@ -3,6 +3,7 @@ $grey: #323232;
 $white: #fff;
 $clear_grey: #f3f3f3;
 
+@import url(//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800);
 
 $title-font: 'Open Sans', sans-serif;
 
@@ -19,9 +20,9 @@ body {
 }
 
 @media (max-width: 992px) {
-  header{
-    text-align: center;
-  }
+  // header{
+  //   text-align: center;
+  // }
 }
 
 @import 'meyer-reset',

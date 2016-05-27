@@ -45,6 +45,6 @@ export default {
 
 <style>
 body {
-  font-family: Helvetica, sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 </style>

@@ -4,7 +4,10 @@
       <h1>{{ topic.titre }}</h1>
       <h3 class="title_rubrique">{{topic.countPost}} posts</h3>
     </div>
-    <post-form-component :topic="topic"></post-form-component>
+    <div class="button row">
+      <button v-show="!addPostToggled" @click="toggleAddPost">Ajouter un post</button>
+    </div>
+    <post-form-component :topic="topic" v-show="addPostToggled" @keyup.esc="hideAddForm"></post-form-component>
     <list-post-component
       v-for='post in posts'
       :post='post'>
@@ -23,11 +26,21 @@
     data () {
       return {
         topic: {},
-        posts: []
+        posts: [],
+        addPostToggled: false
+      }
+    },
+    methods: {
+      toggleAddPost: function () {
+        this.addPostToggled = !this.addPostToggled
+      },
+      hideAddForm: function () {
+        this.addPostToggled = false;
       }
     },
     route: {
       data ({ to }) {
+        this.$on('closeAddPostForm', this.hideAddForm)
         //to.params.id = topic_id
         this.$http.get('topic/'+ to.params.id +'/posts').then( 
           (response) => {

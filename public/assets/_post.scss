@@ -6,29 +6,82 @@
   margin-bottom: 2rem;
 }
 
+.post-list {
+  .button {
+    margin-bottom: 2rem;
+    text-align: center;
+    button {
+      background-color: $red;
+      color: #fff;
+      transition: background-color 0.1s;  
+      border: 0;
+      border-radius: 1rem;
+      padding: 0.6rem 3rem; 
+    }
+  }
+}
+
 .post-list h1, .post-view h1 {
   font-weight: 800;
   font-size: 4.0rem;
 }
 
 .form-post {
+  margin-bottom: 2rem;
   box-sizing: border-box;
   padding: 2rem;
-  border: 1px solid $grey;
+  border: 1px solid #CCC;
+
+  .close-button {
+    margin-right: -0.1rem;
+    margin-bottom: 1rem;    
+    text-align: right;
+    font-size: 2rem;
+    cursor: pointer;
+  }
+    ::-webkit-input-placeholder {
+       color: #888;
+    }
+
+    :-moz-placeholder { /* Firefox 18- */
+       color: #888;  
+    }
+
+    ::-moz-placeholder {  /* Firefox 19+ */
+       color: #888;  
+    }
+
+    :-ms-input-placeholder {  
+       color: #888;  
+    }
+
   input, textarea {
+    border-radius: 3px;
     font-family: $title-font;
     width: 100%;
     display: block;
     margin-bottom: 2rem;
+    height: 3rem;
+    border:0;
+    padding: 0 0.5rem;
   }
   textarea {
+    padding: 0.5rem;
     height: 5rem;
+    max-width: 100%;
   }
 
   input[type=submit] {
-    border: 1px solid #CCC;
+    border: 1px solid $red;
+    border-radius: 2rem;
+    background: transparent;
     padding: 0.5rem 0;
-
+    margin-bottom: 0.5rem;
+    &:hover {
+      background-color: $red;
+      color: #fff;
+      transition: background-color 0.1s;
+    }
   }
 
 }
@@ -36,13 +89,16 @@
 .header_rubrique{
   margin: 30px 10px;
   text-align: center;
+  h1 {
+    margin-bottom: 2rem;
+  }
 }
 
 .title_rubrique{
   text-transform: uppercase;
   color: $red;
   letter-spacing: 5px;
-  font-weight: 800;
+  font-weight: 400;
   font-size: 20px;
 }
 
@@ -78,7 +134,7 @@
 }
 
 .button_post button{
-  background-color: $white;
+  background-color: $red;
   text-align: center;
   border-radius: 50px;
   border: 1px solid $red;
@@ -92,7 +148,7 @@
 }
 
 .button_post button span{
-  color: $red;
+  color: $white;
   font-size: 18px;
 }
 
@@ -142,7 +198,7 @@
   border: 1px solid $red;
   padding:10px 40px;
   display: inline-block;
-  margin:10px;
+  margin:20px 10px 20px 0px;
 
   span{
     color: $red;
@@ -161,18 +217,20 @@
     }
 
     .img {
-      padding: 0;
       padding-top: 2.6rem;
+    }
+    .info {
+      padding: 0;
     }
   }
 
    .comments{
-    .title_rubrique_com{
+    .title-rubrique-com{
       font-size: 1.5rem;
       text-transform: uppercase;
       letter-spacing: 1px;
       font-weight: 800;
-      padding:20px;
+      padding:20px 0px;
     }
 
     .line{
@@ -184,7 +242,7 @@
   }
 
   .comment{
-    margin: 2rem;
+    margin: 2rem 0;
     background-color: $white;
     padding:1.5rem;
 
@@ -209,6 +267,7 @@
       line-height: 25px;
       letter-spacing: 1px;
       font-size: 1rem;
+      padding-top: 0;
     }
   }
 
@@ -219,10 +278,24 @@
 }
 
 @media (max-width: 992px) {
+  
+  .comments{
+    .title-rubrique-com{
+      text-align: center;
+    }
 
+    .line{
+      width: 90%;
+    }
+  }
   .post .info{
     text-align: center;
-    padding: 30px;
+    padding: 0px 30px 30px 30px;
+  }
+
+  .post img
+  {
+    margin-bottom: 20px;
   }
 
   .post .date, .post .text{
@@ -234,4 +307,12 @@
     text-align: center;
   }
 
+}
+
+@media (max-width: 768px) {
+  .post .info{
+    text-align: center;
+    padding: 0px 30px 30px 30px;
+    margin: 0px 20px;
+  }
 }

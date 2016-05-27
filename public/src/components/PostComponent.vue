@@ -16,14 +16,22 @@
             {{ post.likes }} likes
           </span>
         </div>
-
-        <div class="tags">
-          <span class="tag" v-for='tag in tags'>
-            #{{tag.nom}}
-          </span>
+        <div class="list_tags">
+          <div class="tag" v-for="tag in tags">
+            <span>#{{ tag.nom }}</span>
+          </div>
         </div>
       </div>
     </div>
+    <div class="row">
+    <div class="col-md-12 button_post">
+      <a v-link="'/post/' + post.id">
+        <button>
+            <span>Voir le post</span>
+        </button>
+      </a>
+    </div>
+  </div>
   </article>
 </div>
   

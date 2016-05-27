@@ -8,7 +8,11 @@
     <div class="row">
       <div class="col-sm-6 img">
         <img :src="post.image">
-        <span v-for="tag in tags">#{{ tag.nom }}</span>
+        <div class="list_tags">
+          <div class="tag" v-for="tag in tags">
+            <span>#{{ tag.nom }}</span>
+          </div>
+        </div>
       </div>
       <div class="col-sm-6 info">
         <div class="text">
@@ -21,8 +25,11 @@
         </div>
       </div>
     </div>
-
-    <comment-component v-for="comment in comments" :comment="comment"></comment-component>
+    <div class="comments row">
+      <h3 class="title-rubrique-com">Commentaires</h3>
+      <div class="line"></div>
+      <comment-component v-for="comment in comments" :comment="comment"></comment-component>
+    </div>
   </article>
 </div>
 </template>

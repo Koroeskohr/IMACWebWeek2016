@@ -1,5 +1,11 @@
 header {
+  .search-zone {
+    position: relative;
+  }
+
   .search-button {
+    position: absolute;
+    right: 0;
     height: 85px;
     display: flex;
     align-items: center;
@@ -12,7 +18,7 @@ header {
   }
 
   .search-link {
-    padding: 0.6rem;
+    padding: 0.6rem 3rem;
     border: 1px solid $red;
     border-radius: 1rem;
     &:hover {
