@@ -1,0 +1,23 @@
+header {
+  .search-button {
+    height: 85px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: black;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  .search-link {
+    padding: 0.6rem;
+    border: 1px solid $red;
+    border-radius: 1rem;
+    &:hover {
+      background-color: $red;
+      color: #fff;
+    }
+  }
+}
