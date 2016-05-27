@@ -4,7 +4,7 @@
       <div class="info col-sm-10 col-sm-offset-1">
         <div class="center-block">
           <img src="/assets/img/logo.png">
-          <h1><span class="red">Redd</span>book</h1>
+          <h1><span class="red">Red</span>book</h1>
           <h2>Allez viens, on est bien !</h2>
         </div>
       </div>
@@ -39,7 +39,7 @@
               <span class="topic">
                 {{ topic.titre }}
               </span>
-            </a>          
+            </a>
           </div>
         </div>
       </div>
