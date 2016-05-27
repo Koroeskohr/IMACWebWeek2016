@@ -81,7 +81,7 @@ class Post {
 			$query->execute();
 		}
 	}
-// marche pas ?
+
 	public function showSearchPosts($search) {
 		$query = $this->db->prepare("SELECT DISTINCT Post.* FROM Post INNER JOIN Tagge ON Post.id = Tagge.idPost INNER JOIN Tag ON Tagge.idTag = Tag.id INNER JOIN Sujet ON Post.sujet = Sujet.id WHERE Post.titre LIKE '%".$search."%' OR Post.texte LIKE '%".$search."%' OR Post.auteur LIKE '%".$search."%' OR Sujet.titre LIKE '%".$search."%' OR Tag.nom LIKE '%".$search."%';");
 		$query->execute();
