@@ -27,7 +27,10 @@ CREATE TABLE `Comments` (
 INSERT INTO `Comments` (`reponse`, `id`, `texte`, `date`, `auteur`, `post`) VALUES
 (NULL,	1,	'Oui c\'etait un dingue ! \r\nUne fois il est rentre dans un bar, s\'est fait tire dessus, a encore desarme le type et l\'a emmene lui meme en prison ! ',	'2016-05-26 15:42:27',	'Theodore',	7),
 (1,	2,	'Rhooolala il etait fou ce Teddie ! ',	'2016-05-26 15:45:22',	'Benjamin',	7),
-(NULL,	3,	'D\'ailleurs ce qui l\'a sauve lors de son speech c\'etait le papier ou il avait note son discours ! \r\nIl a ralentit la balle. Il l\'a meme montre lors de ses paroles et jete en disant qu\'il fallait plus que ca pour le tuer. ',	'2016-05-26 15:46:40',	'Abraham',	7);
+(NULL,	3,	'D\'ailleurs ce qui l\'a sauve lors de son speech c\'etait le papier ou il avait note son discours ! \r\nIl a ralentit la balle. Il l\'a meme montre lors de ses paroles et jete en disant qu\'il fallait plus que ca pour le tuer. ',	'2016-05-26 15:46:40',	'Abraham',	7),
+(NULL,	4,	'WOW ca a l\'air tellement bon ! J\'ai faim.',	'2016-05-27 08:34:13',	'Hodoritos',	12),
+(4,	5,	'Oui tu as raison. Je trouve que ce commentaire apporte beaucoup a cette discussion. Merci beaucoup de partager tes passions.',	'2016-05-27 08:35:55',	'Miley Sir Usain Bold',	12),
+(NULL,	6,	'Ohlala miam miam. ',	'2016-05-27 08:39:30',	'Charlie Test Zteron',	12);
 
 DROP TABLE IF EXISTS `Post`;
 CREATE TABLE `Post` (
@@ -53,7 +56,10 @@ INSERT INTO `Post` (`auteur`, `titre`, `sujet`, `likes`, `date`, `image`, `texte
 ('Abraham',	'Roosevelt etait un homme badass ! ',	2,	15,	'2016-05-26 15:40:21',	'https://s-media-cache-ak0.pinimg.com/236x/b1/03/83/b103836e8c67bca9bafc832c7af798e0.jpg',	'Roosevelt etait quelqu\'un de trop cool ! Il s\'est deja fait tire dessus avant un speech, a desarme le type, puis a donne son speech pendant plus d\'une heure ! :D',	7),
 ('Admin',	'Si votre sujet ne correspond a aucun de Redbook, postez ici ! ',	4,	5,	'2016-05-27 08:02:54',	'http://static1.squarespace.com/static/544829d1e4b068e746ba1397/54510a13e4b04ee588b3e517/54ad8019e4b0fa9da401dccd/1421085599459/',	'Salut les amis ! \r\nComme vous pouvez le deviner par ce titre, de plus en plus d\'articles se trouvent postes sur les mauvais sujets du site. \r\nJe fais donc une piqure de rappel afin que ce \"forum\" gagne en consistance ! \r\nJe vais commencer a faire migrer les articles inadaptes par ici, donc ne vous inquietez pas si vous ne les trouvez plus la ou vous les avez pose.',	8),
 ('Freddie Roose',	'Abbie aussi etait doue ! ',	2,	3,	'2016-05-27 08:11:06',	'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Abraham_Lincoln_%281809-1865%29_-_Daguerr%C3%A9otype_de_Lincoln_par_Alexander_Gardner_en_1863_%28coloris%C3%A9%29.jpg/624px-Abraham_Lincoln_%281809-1865%29_-_Daguerr%C3%A9otype_de_Lincoln_par_Alexander_Gardner_en_1863_%28coloris%C3%A9%29.jpg',	'Abraham Lincoln, ne le 12 fevrier 1809 dans le comte de Hardin au Kentucky et mort assassine le 15 avril 1865 e Washington, est le seizieme president des Etats-Unis. Il est elu pour deux mandats de quatre ans, en 1860 et 1864, sans terminer ce dernier. Il est le premier president republicain de l\'histoire du pays. Il a dirige les Etats-Unis lors de la pire crise constitutionnelle, militaire et morale de son histoire -la Guerre de Secession , et reussit a preserver l\'Union. C\'est au cours de celle-ci qu\'il fait ratifier le XIIIe amendement de la Constitution des Etats-Unis et abolit l\'esclavage. Il sort victorieux de la guerre mais meurt assassine deux mois plus tard, a la suite d\'un complot emanant de partisans confederes au debut de son second mandat.\r\n\r\nLincoln nait dans une famille modeste. Apres une enfance et adolescence sans relief, il apprend le droit grace a ses seuls talents d\'autodidacte et devient avocat itinerant. Entraine peu a peu sur le terrain de la politique, il dirige un temps le parti Whig et est elu a la Chambre des representants de l\'Illinois dans les annees 1830, puis a celle des Etats-Unis pour un mandat dans les annees 1840.',	9),
-('F. Hollande',	'M-Moi ',	2,	12,	'2016-05-27 08:15:51',	'http://www.recette-gateau.eu/wp-content/uploads/2014/03/Flan-au-Lait.jpg',	'Be courageous,be you, be fu.. be proud of you.\r\nBecause we can be do, what we want to do.',	11);
+('F. Hollande',	'M-Moi ',	2,	12,	'2016-05-27 08:15:51',	'http://www.recette-gateau.eu/wp-content/uploads/2014/03/Flan-au-Lait.jpg',	'Be courageous,be you, be fu.. be proud of you.\r\nBecause we can be do, what we want to do.',	11),
+('OpenGLouton',	'La raclette, une histoire de vie',	1,	0,	'2016-05-27 08:10:00',	'http://img0.ndsstatic.com/cuisine/raclette-classique_179190_w620.jpg',	'Un plat qui n\'a guere de saison. Un plat qui est synonyme de partage, de bonheur, de discussion. Il repond a tous les problemes du monde. La raclette, un plat intemporel, qui represente a lui-meme la democratie. ',	12),
+('GitPullOver',	'Le burritos dans toute sa splendeur',	1,	10,	'2016-05-27 08:12:17',	'http://images.marmitoncdn.org/recipephotos/multiphoto/31/31a16e4f-d422-4f84-9671-663b7c1aabf7_normal.jpg',	'Le burritos montre la diversite. Les legumes se melangent a la viande pour former un combo de saveur. Les vrais savent.',	13),
+('Gordon Ramsey Bolton',	'Patrick, un petit cookie ?',	1,	4,	'2016-05-27 08:16:03',	'http://images.media-allrecipes.com/userphotos/720x405/1107530.jpg',	'Le cookie n\'est pas utilise seulement pour le web. Il est egalement tellement savoureux, qu\'on le savourerait. Une pepite !',	14);
 
 DROP TABLE IF EXISTS `Sujet`;
 CREATE TABLE `Sujet` (
@@ -117,4 +123,4 @@ INSERT INTO `Tagge` (`idPost`, `idTag`) VALUES
 (5,	7),
 (5,	10);
 
--- 2016-05-27 08:43:27
+-- 2016-05-27 08:52:26
