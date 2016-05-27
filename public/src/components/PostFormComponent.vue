@@ -46,6 +46,10 @@
             console.log("fail !")
             console.log(response)
           }
+        ).finally(
+          () => {
+            location.reload();
+          }
         )
       },
       closeForm: function() {

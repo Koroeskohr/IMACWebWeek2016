@@ -1,3 +1,10 @@
+.breadcrumbs {
+  a {
+    color: $red;
+    text-decoration: none;
+  }
+  margin-top: 2rem;
+}
 
 .post{
   background-color: $white;
@@ -177,14 +184,45 @@
   padding: 0 2.6rem;
 }
 
+.like-wrapper {
+  margin-top: 1rem;
+  display: inline-block;
+
+  &:hover {
+    .nb_likes {
+      transition: 0.2s;
+      background: $red;
+      color: #fff;
+    }
+    .like-button img{
+      transition: filter 0.2s;
+      filter: brightness(3.0);
+    }
+  }
+}
+
+.like-wrapper {
+  .nb_likes {
+    cursor: pointer;
+    border: 1px solid $red;
+  }
+
+  .like-button img {
+    max-width: 20px;
+    margin-right: 1rem; 
+  }
+}
+
 .post .nb_likes{
+  padding: 1px;
+  display: flex;
+  align-items: center;
   background-color: $clear_grey;
   padding: 10px;
   border-radius: 5px;
   font-size: 12px;
   letter-spacing: 2px;
   color: $red;
-  display: inline-block;
 }
 
 

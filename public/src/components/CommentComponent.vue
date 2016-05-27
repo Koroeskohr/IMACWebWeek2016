@@ -7,7 +7,7 @@
     <div class="text">
       {{ comment.texte }}
     </div>
-
+    <input placeholder="Commenter..." type="text" v-model="response" @keyup.enter="sendComment"></textarea>
     <div class="sub-comments">
       <comment-component v-for='childComment in childComments' :comment='childComment' v-show="childComments != []">
     </div>
@@ -19,11 +19,33 @@
   export default {
     name: "CommentComponent",
     props: {
-      comment: Object
+      comment: Object,
+      post: Object
     },
     data () {
       return {
-        childComments: []
+        childComments: [],
+        response: ''
+      }
+    },
+    methods: {
+      sendComment: function() {
+        this.$http.post('post/'+ this.post.id + '/comment/' + this.comment.id, 
+          {
+            texte: this.response
+          }
+        ).then(
+          (response) => {
+            console.log('success sent comment')
+          },
+          (response) => {
+            console.log('failed sent comment')
+          }
+        ).finally(
+          () => {
+            location.reload()
+          }
+        )
       }
     },
     ready () {
