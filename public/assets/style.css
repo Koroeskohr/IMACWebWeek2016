@@ -148,6 +148,20 @@ table {
   color: #e74c3c;
   display: inline-block; }
 
+.tag {
+  text-decoration: none;
+  transition: 0.1s;
+  -webkit-transition: 0.1s;
+  background-color: transparent;
+  text-align: center;
+  border-radius: 50px;
+  border: 1px solid #e74c3c;
+  padding: 10px 40px;
+  display: inline-block;
+  margin: 10px; }
+  .tag span {
+    color: #e74c3c; }
+
 .post-view .post {
   background: transparent; }
   .post-view .post .text {
@@ -157,6 +171,36 @@ table {
   .post-view .post .img {
     padding: 0;
     padding-top: 2.6rem; }
+.post-view .comments .title_rubrique_com {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 800;
+  padding: 20px; }
+.post-view .comments .line {
+  height: 1px;
+  background-color: #e74c3c;
+  width: 100%;
+  margin-bottom: 20px; }
+.post-view .comment {
+  margin: 2rem;
+  background-color: #fff;
+  padding: 1.5rem; }
+  .post-view .comment .info {
+    margin-bottom: 15px; }
+  .post-view .comment .date {
+    color: #e74c3c;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 1px; }
+  .post-view .comment .author {
+    color: #e74c3c;
+    font-weight: 600;
+    text-transform: uppercase; }
+  .post-view .comment .text {
+    line-height: 25px;
+    letter-spacing: 1px;
+    font-size: 1rem; }
 .post-view .sub-comments {
   margin-left: 5rem; }
 
@@ -166,7 +210,11 @@ table {
     padding: 30px; }
 
   .post .date, .post .text {
-    margin: 5px 0px; } }
+    margin: 5px 0px; }
+
+  .button_post {
+    margin: 0px 10px 30px 10px;
+    text-align: center; } }
 .home .info {
   text-align: center; }
   .home .info h1 {

@@ -131,6 +131,25 @@
   display: inline-block;
 }
 
+
+.tag{
+  text-decoration: none;
+  transition: 0.1s;
+  -webkit-transition: 0.1s;
+  background-color: transparent;
+  text-align: center;
+  border-radius: 50px;
+  border: 1px solid $red;
+  padding:10px 40px;
+  display: inline-block;
+  margin:10px;
+
+  span{
+    color: $red;
+  }
+
+}
+
 .post-view {
   .post {
     background: transparent;
@@ -147,6 +166,53 @@
     }
   }
 
+   .comments{
+    .title_rubrique_com{
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 800;
+      padding:20px;
+    }
+
+    .line{
+      height:1px;
+      background-color: $red;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+  }
+
+  .comment{
+    margin: 2rem;
+    background-color: $white;
+    padding:1.5rem;
+
+    .info{
+      margin-bottom: 15px;
+    }
+
+    .date{
+      color: $red;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .author{
+      color: $red;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .text{
+      line-height: 25px;
+      letter-spacing: 1px;
+      font-size: 1rem;
+    }
+  }
+
+
   .sub-comments {
     margin-left: 5rem;
   }
@@ -161,6 +227,11 @@
 
   .post .date, .post .text{
     margin: 5px 0px;
+  }
+
+  .button_post{
+    margin: 0px 10px 30px 10px;
+    text-align: center;
   }
 
 }
