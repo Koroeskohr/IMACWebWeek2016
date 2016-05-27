@@ -186,7 +186,7 @@
 }
 
 .post .info{
-  padding: 0 2.6rem;
+  padding: 0 2.6rem 0 0;
 }
 
 .like-wrapper {
@@ -241,7 +241,11 @@
   border: 1px solid $red;
   padding:10px 40px;
   display: inline-block;
-  margin:20px 10px 20px 0px;
+  margin:20px 10px 0px 0px;
+  
+  &:last-of-type {
+    margin-right: 0;
+  }
 
   span{
     color: $red;

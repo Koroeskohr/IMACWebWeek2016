@@ -29,7 +29,8 @@
 
   .results {
     overflow-y: scroll;
-    
+    max-height: 59vh;
+
     h3 {
       font-size: 1.4rem;
       font-weight: 800;
