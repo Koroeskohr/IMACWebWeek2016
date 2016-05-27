@@ -20,7 +20,7 @@
     },
     methods: {
       hideAddForm: function() {
-        this.$dispatch('searchToggle')
+        this.$dispatch('searchToggled')
       }
     }
   }
