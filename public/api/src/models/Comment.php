@@ -28,7 +28,7 @@ class Comment {
 	}
 
 	public function getAll(){
-		$query = "SELECT * FROM Comments";
+		$sql = "SELECT * FROM Comments";
 		$query = $this->db->query($sql);
 		$result = $query->fetchAll();
 		return $result;
