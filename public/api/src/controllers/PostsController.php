@@ -16,7 +16,7 @@ class PostsController {
 		$titre  = filter_var($body['titre'], FILTER_SANITIZE_STRING);
 		$auteur = filter_var($body['auteur'], FILTER_SANITIZE_STRING);
 		$image  = filter_var($body['image'], FILTER_SANITIZE_STRING);
-		$texte  = filter_var($body['contenu'], FILTER_SANITIZE_STRING);
+		$texte  = filter_var($body['texte'], FILTER_SANITIZE_STRING);
 
 		$response->status = $this->post->create($titre, $auteur, $image, $texte, $args['id']);
 
