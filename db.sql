@@ -5,10 +5,6 @@ SET time_zone = '+00:00';
 SET foreign_key_checks = 0;
 SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
 
-DROP DATABASE IF EXISTS `redbook`;
-CREATE DATABASE `redbook` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `redbook`;
-
 DROP TABLE IF EXISTS `Comments`;
 CREATE TABLE `Comments` (
   `reponse` int(10) unsigned DEFAULT NULL,
@@ -33,13 +29,13 @@ INSERT INTO `Comments` (`reponse`, `id`, `texte`, `date`, `auteur`, `post`) VALU
 (NULL,	6,	'Ohlala miam miam. ',	'2016-05-27 08:39:30',	'Charlie Test Zteron',	12),
 (NULL,	7,	'J\'adore les animaux, cet article est super interessant, j\'en parlerai a mes petits enfants !',	'2016-05-27 08:28:10',	'Mamie_gateau',	1),
 (NULL,	8,	'Ouiiiii les herissons c\'est trop trop trop mignon !!!! Je veux plus d\'articles sur ce sujet !',	'2016-05-27 08:31:23',	'LoverDu77',	4),
-(7,	9,	'Je suis d\'accord avec toi. Et ce site est trop bien, les gens qui l\'ont crees sont genials, il faudrait leur donner une medaille et des vacances au Bahamas',	'2016-05-27 08:33:11',	'Mouton',	4),
-(7,	10,	'Personnellement je prefererais voir des articles sur d\'autres animaux que les herissons. Les baleines c\'est mieux :)',	'2016-05-27 08:34:41',	'Grincheux_pas_si_grincheux',	4),
+(8,	9,	'Je suis d\'accord avec toi. Et ce site est trop bien, les gens qui l\'ont crees sont genials, il faudrait leur donner une medaille et des vacances au Bahamas',	'2016-05-27 08:33:11',	'Mouton',	4),
+(8,	10,	'Personnellement je prefererais voir des articles sur d\'autres animaux que les herissons. Les baleines c\'est mieux :)',	'2016-05-27 08:34:41',	'Grincheux_pas_si_grincheux',	4),
 (NULL,	11,	'Cet article correspond parfaitement a ma vision de la congolexicomatisation des lois du marche ! Et puis, y a un herisson dedans, donc c\'est encore mieux',	'2016-05-27 08:36:57',	'EddieMalou',	5),
 (11,	12,	'OUAH JE SUIS VOTRE PLUS GRAND FAN love love coeur coeur xxx antoine daniel forever yaoi',	'2016-05-27 08:38:00',	'JB_LOVER',	5),
 (11,	13,	'Oh la la, encore un kikoo, il y en a beaucoup trop sur ce site...',	'2016-05-27 08:38:35',	'Pfffff',	5),
 (NULL,	14,	'J\'ai rien compris a l\'article, quelqu\'un peut m\'expliquer svp ?',	'2016-05-27 08:41:22',	'BakaMan',	5),
-(11,	15,	'Non.',	'2016-05-27 08:41:46',	'Troll',	5),
+(14,	15,	'Non.',	'2016-05-27 08:41:46',	'Troll',	5),
 (NULL,	16,	'Je ne sais pas comment j\'ai atteri ici, mais je suis content !\r\nEt quand je suis content je vomis :)',	'2016-05-27 08:48:42',	'Simon Jeremi ',	5),
 (NULL,	17,	'Hey, my name is Bryan and I\'m reading this article in my kitchen, it\'s really fun !',	'2016-05-27 08:52:47',	'Bryan',	5),
 (17,	18,	'Bryan get out of the kitchen !',	'2016-05-27 08:54:14',	'Jenny',	5),
@@ -173,4 +169,4 @@ INSERT INTO `Tagge` (`idPost`, `idTag`) VALUES
 (5,	7),
 (5,	10);
 
--- 2016-05-27 09:36:30
+-- 2016-05-27 09:42:01
