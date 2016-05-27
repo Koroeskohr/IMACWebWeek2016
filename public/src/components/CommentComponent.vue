@@ -7,7 +7,7 @@
     <div class="text">
       {{ comment.texte }}
     </div>
-    <input placeholder="Commenter..." type="text" v-model="response" @keyup.enter="sendComment"></textarea>
+    <input placeholder="Commenter..." type="text" v-model="response" @keyup.enter="sendComment"></input>
     <div class="sub-comments">
       <comment-component v-for='childComment in childComments' :comment='childComment' v-show="childComments != []">
     </div>
